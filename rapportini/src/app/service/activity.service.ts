@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { first  } from 'rxjs/operators'
 import { ActivityDto } from 'src/app/models/activity-dto';
+import { updateData } from '../models/functions/functions';
 
 @Injectable({
   providedIn: 'root'
@@ -59,6 +60,19 @@ export class ActivityService {
     ana.identity = ultimo +"";     
       
     this.activityList.push(ana);
-    localStorage.setItem("anagrafica",JSON.stringify(this.activityList));
+    localStorage.setItem("activity-list",JSON.stringify(this.activityList));
   }
+
+  updateActivity(ana:ActivityDto){
+    var i = 0;
+    while(this.activityList[i]){
+      if(this.activityList[i].identity==ana.identity){
+        updateData(this.activityList[i],ana);
+      }
+      i++;
+    }
+    localStorage.setItem("activity-list",JSON.stringify(this.activityList));
+    
+  }
+
 }

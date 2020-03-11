@@ -30,5 +30,11 @@ export class ActivityListComponent implements OnInit {
   newActivity(){
     this.route.navigateByUrl('activity')
   }
+
+  editActivity(ana:ActivityDto){
+    console.log(ana);
+    
+    this.route.navigateByUrl('activity/'+ana.identity);
+  }
   
 }

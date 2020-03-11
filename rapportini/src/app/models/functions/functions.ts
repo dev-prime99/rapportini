@@ -7,3 +7,11 @@ export function mapDataFromModel(source:any,model:any):any{
     }
     return result;
   }
+
+  export function updateData(base:any,aggiornato:any): void{
+    if(base){
+      Object.keys(base).forEach(key=>{
+        base[key] = aggiornato[key];
+      });
+    }
+  }

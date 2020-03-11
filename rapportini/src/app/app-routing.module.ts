@@ -13,6 +13,7 @@ import { ProjectListComponent } from './models/modules/project-list/project-list
 const routes: Routes = [
   {path:"",redirectTo:'/activity-list',pathMatch:'full'},
   {path:"activity", component: ActivityComponent},
+  {path:"activity/:identity", component: ActivityComponent},
   {path:"activity-list", component: InitPageComponent},
   {path:"anagrafica", component: AnagraficaHandlerComponent},
   {path:"anagrafica/:identity", component: AnagraficaHandlerComponent},

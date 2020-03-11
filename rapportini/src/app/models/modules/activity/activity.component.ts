@@ -45,7 +45,15 @@ export class ActivityComponent implements OnInit {
 
   toSave(){
     var data = this.activityForm.getRawValue();
-    this.actService.addActivity(data);
+
+    if(!this.identity){
+      this.actService.addActivity(data);
+      this.router.navigateByUrl('activity-list')
+    }else{
+      var data = this.activityForm.getRawValue();
+      this.actService.updateActivity(data);
+      // console.log(data)
+    }
     // alert( JSON.stringify( data));
     this.router.navigateByUrl('activity-list');
   }
