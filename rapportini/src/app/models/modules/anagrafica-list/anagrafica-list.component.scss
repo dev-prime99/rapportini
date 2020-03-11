@@ -1,0 +1,10 @@
+
+div{
+    padding: 0 10px;
+    &:first-child{
+        margin-bottom: 7px;
+    }
+    th{
+        padding-right:20px;
+    }
+}

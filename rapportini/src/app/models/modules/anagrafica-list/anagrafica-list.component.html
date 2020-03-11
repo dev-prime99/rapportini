@@ -1,0 +1,26 @@
+<div>Lista Anagrafiche</div>
+<div style="float:right;">
+    <button (click) = "resetAnagrafica()" >Reset</button>  
+    <button (click) = "newAnagrafica()" >Aggiungi</button>
+</div>
+<div>
+    <table >
+        <thead>
+            <tr>
+              <th>Identity</th>
+              <th>Cliente</th>
+              <th>Tipo di cliente</th>
+              <th>Città</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of rows">
+                <td>{{row.identity}}</td>
+                <td>{{row.name}}</td>
+                <td>{{row.type}}</td>
+                <td>{{row.city}}</td>
+                <!-- <td><button (click)="editAnagrafica(row)">Modifica</button></td> -->
+            </tr>
+        </tbody>
+    </table>
+</div>

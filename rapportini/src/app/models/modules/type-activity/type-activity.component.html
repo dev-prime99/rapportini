@@ -1,7 +1,10 @@
 
 <div [formGroup] = "typeForm">
+    <h3>Tipo di Attività</h3>
     <label for="code">Codice Attività</label>
-    <div><input type="text" formControllName="code"></div>
+    <div><input type="text" formControlName="code"></div>
     <label for="desc">Descrizione</label>
-    <div><input type="text" formControllName="desc"></div>
+    <div><input type="text" formControlName="desc"></div>
+    <button (click) = "toIndietro()">Indietro</button>
+    <button (click) = "toAvanti()" [disabled]="!typeForm.valid">Salva</button>
 </div>

@@ -1,0 +1,30 @@
+<div>Lista Attività</div>
+<div style="float:right;">
+    <button (click) = "resetActivity()" >Reset</button> 
+    <button (click) = "newActivity()" >Aggiungi</button>
+</div>
+<div>
+    <table >
+        <thead>
+            <tr>
+                <th>Identity</th>
+                <th>Cliente</th>
+                <th>Attivita</th>
+                <th>Data</th>
+                <th>Quantità ore</th>
+                <th>Descrizione</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of rows">
+                <td>{{row.identity}}</td>
+                <td>{{row.customer}}</td>
+                <td>{{row.activity}}</td>
+                <td>{{row.date}}</td>
+                <td>{{row.hours}}</td>
+                <td>{{row.desc}}</td>
+                <!-- <td><button (click)="editAnagrafica(row)">Modifica</button></td> -->
+            </tr>
+        </tbody>
+    </table>
+</div>

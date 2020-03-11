@@ -1,5 +1,6 @@
 
 export interface TypeActivityDto {
+    identity: string;
     code: string;
-    description: string;
+    desc: string;
 }

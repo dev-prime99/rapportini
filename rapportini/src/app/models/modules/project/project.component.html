@@ -1,0 +1,10 @@
+
+<div [formGroup] = "formProject">
+    <h3>Progetti</h3>
+    <label for="code">Codice Progetto</label>
+    <div><input  type="text" formControlName="code" ></div>
+    <label for="desc">Descrizione</label>
+    <div><input type="text" formControlName="desc"></div>
+    <button (click) = "toIndietro()">Indietro</button>
+    <button (click) = "toAvanti()" [disabled]="!formProject.valid">Salva</button>
+</div>

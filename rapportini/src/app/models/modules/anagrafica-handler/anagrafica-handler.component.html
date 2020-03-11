@@ -1,9 +1,11 @@
-
 <div [formGroup] = "anagraficaForm">
-    <label for="name">Nome</label>
-    <div><input type="text" formControllName="name"></div>
-    <label for="type">Tipo di Cliente</label>
-    <div><input type="text" formControllName="type"></div>
-    <label for="city">Città</label>
-    <div><input type="text" formControllName="city"></div>
+    <h3>Anagrafica</h3>
+        <label for="name">Nome</label>
+        <div><input type="text" formControlName="name"></div>
+        <label for="type">Tipo di Cliente</label>
+        <div><input type="text" formControlName="type"></div>
+        <label for="city">Città</label>
+        <div><input type="text" formControlName="city"></div>
+    <button (click) = "toIndietro()">Indietro</button>
+    <button (click) = "toAvanti()" [disabled]="!anagraficaForm.valid">Salva</button>
 </div>

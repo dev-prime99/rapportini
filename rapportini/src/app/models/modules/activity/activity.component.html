@@ -1,0 +1,15 @@
+<div [formGroup] = "activityForm">
+    <h3>Attività svolta</h3>
+    <label for="customer">Nome</label>
+    <div><input type="text" formControlName="customer"></div>
+    <label for="activity">Tipo di Attività</label>
+    <div><input type="text" formControlName="activity"></div>
+    <label for="date">Data</label>
+    <div><input type="text" formControlName="date"></div>
+    <label for="hours">Quantità ore</label>
+    <div><input type="text" formControlName="hours"></div>
+    <label for="desc">Descrizione</label>
+    <div><input type="text" formControlName="desc"></div>
+    <button (click) = "toIndietro()">Indietro</button>
+    <button (click) = "toSave()" [disabled]="!activityForm.valid">Salva</button>
+</div>
