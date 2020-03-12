@@ -1,13 +1,27 @@
 <div [formGroup] = "activityForm">
     <h3>Attività svolta</h3>
     <label for="customer">Nome</label>
-    <div><input type="text" formControlName="customer"></div>
+    <div>
+        <select formControlName="customer" *ngFor="let row of rows">
+            <option value="{{row.name}}">{{row.name}}</option>
+        </select>  
+    </div>
     <label for="activity">Tipo di Attività</label>
-    <div><input type="text" formControlName="activity"></div>
+    <div>
+        <select formControlName="activity" *ngFor="let car of cars">
+            <option value="{{car.code}}">{{car.code}}</option>
+        </select>  
+    </div>
+    <label for="project">Progetto</label>
+    <div>
+        <select formControlName="project" *ngFor="let eye of eyes">
+            <option value="{{eye.code}}">{{eye.code}}</option>
+        </select>  
+    </div>
     <label for="date">Data</label>
-    <div><input type="text" formControlName="date"></div>
+    <div><input type="date" formControlName="date"></div>
     <label for="hours">Quantità ore</label>
-    <div><input type="text" formControlName="hours"></div>
+    <div><input type="number" formControlName="hours" min="1"></div>
     <label for="desc">Descrizione</label>
     <div><input type="text" formControlName="desc"></div>
     <button (click) = "toIndietro()">Indietro</button>

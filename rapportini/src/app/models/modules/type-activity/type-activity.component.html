@@ -2,7 +2,7 @@
 <div [formGroup] = "typeForm">
     <h3>Tipo di Attività</h3>
     <label for="code">Codice Attività</label>
-    <div><input type="text" formControlName="code"></div>
+    <div><input type="number" formControlName="code"></div>
     <label for="desc">Descrizione</label>
     <div><input type="text" formControlName="desc"></div>
     <button (click) = "toIndietro()">Indietro</button>
