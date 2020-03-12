@@ -31,4 +31,9 @@ export class TypeActivityListComponent implements OnInit {
     this.route.navigateByUrl('type-activity')
   };
 
+  editType(ana:TypeActivityDto){
+    // console.log(ana);
+    this.route.navigateByUrl('type-activity/'+ana.identity);
+  }
+
 }

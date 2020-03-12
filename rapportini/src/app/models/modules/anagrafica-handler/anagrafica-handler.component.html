@@ -7,5 +7,5 @@
         <label for="city">Città</label>
         <div><input type="text" formControlName="city"></div>
     <button (click) = "toIndietro()">Indietro</button>
-    <button (click) = "toAvanti()" [disabled]="!anagraficaForm.valid">Salva</button>
+    <button (click) = "toSave()" [disabled]="!anagraficaForm.valid">Salva</button>
 </div>

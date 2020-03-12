@@ -31,4 +31,9 @@ export class ProjectListComponent implements OnInit {
     this.route.navigateByUrl('project')
   }
 
+  editProject(ana:ProjectDto){
+    // console.log(ana);
+    this.route.navigateByUrl('project/'+ana.identity);
+  }
+
 }

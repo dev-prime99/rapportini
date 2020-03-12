@@ -44,9 +44,17 @@ export class TypeActivityComponent implements OnInit {
 
   toAvanti(){
     var data = this.typeForm.getRawValue();
-    this.typeAcService.addType(data);
+
+    if(!this.identity){
+      this.typeAcService.addType(data);
+      this.router.navigateByUrl('project-list')
+    }else{
+      var data = this.typeForm.getRawValue();
+      this.typeAcService.updateTypeAc(data);
+      // console.log(data)
+    }
     // alert( JSON.stringify( data));
-    this.router.navigateByUrl('type-activity-list');
+    this.router.navigateByUrl('project-list');
   }
 
 }

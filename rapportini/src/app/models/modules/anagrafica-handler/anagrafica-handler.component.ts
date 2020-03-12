@@ -44,10 +44,18 @@ export class AnagraficaHandlerComponent implements OnInit {
     this.router.navigateByUrl('anagrafica-list');
   }
 
-  toAvanti(){
+  toSave(){
     var data = this.anagraficaForm.getRawValue();
-    this.anaService.addAnagrafica(data);
-    //alert( JSON.stringify( data));
-    this.router.navigateByUrl('anagrafica-list')
+
+    if(!this.identity){
+      this.anaService.addAnagrafica(data);
+      this.router.navigateByUrl('anagrafica-list')
+    }else{
+      var data = this.anagraficaForm.getRawValue();
+      this.anaService.updateAnagrafica(data);
+      // console.log(data)
+    }
+    // alert( JSON.stringify( data));
+    this.router.navigateByUrl('anagrafica-list');
   }
 }

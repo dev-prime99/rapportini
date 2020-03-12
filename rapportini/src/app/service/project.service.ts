@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ProjectDto } from 'src/app/models/project-dto';
 import { first  } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { updateData } from '../models/functions/functions';
 
 @Injectable({
   providedIn: 'root'
@@ -60,5 +61,17 @@ export class ProjectService {
       
     this.prjList.push(ana);
     localStorage.setItem("project-list",JSON.stringify(this.prjList));
+  }
+
+  updateProject(ana:ProjectDto){
+    var i = 0;
+    while(this.prjList[i]){
+      if(this.prjList[i].identity==ana.identity){
+        updateData(this.prjList[i],ana);
+      }
+      i++;
+    }
+    localStorage.setItem("project-list",JSON.stringify(this.prjList));
+    
   }
 }

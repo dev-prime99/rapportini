@@ -43,9 +43,17 @@ export class ProjectComponent implements OnInit {
 
   toAvanti(){
     var data = this.formProject.getRawValue();
-    this.prjService.addProject(data);
+
+    if(!this.identity){
+      this.prjService.addProject(data);
+      this.router.navigateByUrl('project-list')
+    }else{
+      var data = this.formProject.getRawValue();
+      this.prjService.updateProject(data);
+      // console.log(data)
+    }
     // alert( JSON.stringify( data));
-    this.router.navigateByUrl('project-list')
+    this.router.navigateByUrl('project-list');
   }
 
 }

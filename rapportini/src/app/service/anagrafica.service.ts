@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { first  } from 'rxjs/operators'
 import { AnagraficaDto } from 'src/app/models/anagrafica-dto';
+import { updateData } from '../models/functions/functions';
 
 
 @Injectable({
@@ -66,6 +67,18 @@ export class AnagraficaService {
       
     this.anaList.push(ana);
     localStorage.setItem("anagrafica-list",JSON.stringify(this.anaList));
+  }
+
+  updateAnagrafica(ana:AnagraficaDto){
+    var i = 0;
+    while(this.anaList[i]){
+      if(this.anaList[i].identity==ana.identity){
+        updateData(this.anaList[i],ana);
+      }
+      i++;
+    }
+    localStorage.setItem("activity-list",JSON.stringify(this.anaList));
+    
   }
 
 

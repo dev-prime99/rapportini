@@ -30,5 +30,10 @@ export class AnagraficaListComponent implements OnInit {
   newAnagrafica(){
     this.route.navigateByUrl('anagrafica')
   }
+
+  editAnagrafica(ana:AnagraficaDto){
+    // console.log(ana);
+    this.route.navigateByUrl('anagrafica/'+ana.identity);
+  }
   
 }

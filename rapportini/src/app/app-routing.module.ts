@@ -19,8 +19,10 @@ const routes: Routes = [
   {path:"anagrafica/:identity", component: AnagraficaHandlerComponent},
   {path:"anagrafica-list", component: AnagraficaListComponent},
   {path:"type-activity", component: TypeActivityComponent},
+  {path:"type-activity/:identity", component: TypeActivityComponent},
   {path:"type-activity-list", component: TypeActivityListComponent},
   {path:"project", component: ProjectComponent},
+  {path:"project/:identity", component: ProjectComponent},
   {path:"project-list", component: ProjectListComponent},
 ];
 

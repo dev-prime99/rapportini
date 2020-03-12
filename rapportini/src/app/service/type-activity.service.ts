@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { first  } from 'rxjs/operators'
 import { Observable } from 'rxjs';
 import { TypeActivityDto } from 'src/app/models/type_activity-dto';
+import { updateData } from '../models/functions/functions';
 
 @Injectable({
   providedIn: 'root'
@@ -60,6 +61,17 @@ export class TypeActivityService {
       
     this.typeList.push(ana);
     localStorage.setItem("anagrafica-list",JSON.stringify(this.typeList));
+  }
+
+  updateTypeAc(ana:TypeActivityDto){
+    var i = 0;
+    while(this.typeList[i]){
+      if(this.typeList[i].identity==ana.identity){
+        updateData(this.typeList[i],ana);
+      }
+      i++;
+    }
+    localStorage.setItem("project-list",JSON.stringify(this.typeList));
   }
 
 }
