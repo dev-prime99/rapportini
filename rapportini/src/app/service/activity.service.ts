@@ -66,8 +66,12 @@ export class ActivityService {
   updateActivity(ana:ActivityDto){
     var i = 0;
     while(this.activityList[i]){
+      console.log(this.activityList[i]);
+      
       if(this.activityList[i].identity==ana.identity){
         updateData(this.activityList[i],ana);
+        console.log(this.activityList[i],ana);
+        
       }
       i++;
     }

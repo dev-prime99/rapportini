@@ -2,20 +2,20 @@
     <h3>Attività svolta</h3>
     <label for="customer">Nome</label>
     <div>
-        <select formControlName="customer" *ngFor="let row of rows">
-            <option value="{{row.name}}">{{row.name}}</option>
+        <select formControlName="customer">
+            <option *ngFor="let row of rows" value="{{row.name}}">{{row.name}}</option>
         </select>  
     </div>
     <label for="activity">Tipo di Attività</label>
     <div>
-        <select formControlName="activity" *ngFor="let car of cars">
-            <option value="{{car.code}}">{{car.code}}</option>
+        <select formControlName="activity">
+            <option *ngFor="let car of cars" value="{{car.code}}">{{car.code}}</option>
         </select>  
     </div>
     <label for="project">Progetto</label>
     <div>
-        <select formControlName="project" *ngFor="let eye of eyes">
-            <option value="{{eye.code}}">{{eye.code}}</option>
+        <select formControlName="project">
+            <option *ngFor="let eye of eyes" value="{{eye.code}}">{{eye.code}}</option>
         </select>  
     </div>
     <label for="date">Data</label>

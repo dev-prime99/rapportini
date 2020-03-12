@@ -39,7 +39,8 @@ export class ActivityComponent implements OnInit {
       hours: [null,Validators.required],
       desc: [null]
     });
-   }
+  }
+
 
   ngOnInit(): void {
     this.identity = this.route.snapshot.params.identity;
