@@ -9,7 +9,7 @@ import { mapDataFromModel } from 'src/app/models/functions/functions';
 @Component({
   selector: 'app-anagrafica-handler',
   templateUrl: './anagrafica-handler.component.html',
-  styles: ['div:first-child{ padding-left: 10px; }']
+  styleUrls: ['./anagrafica-handler.component.scss']
 })
 export class AnagraficaHandlerComponent implements OnInit {
 

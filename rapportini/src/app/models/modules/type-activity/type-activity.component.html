@@ -1,10 +1,19 @@
 
-<div [formGroup] = "typeForm">
-    <h3>Tipo di Attività</h3>
-    <label for="code">Codice Attività</label>
-    <div><input type="number" formControlName="code"></div>
-    <label for="desc">Descrizione</label>
-    <div><input type="text" formControlName="desc"></div>
-    <button (click) = "toIndietro()">Indietro</button>
-    <button (click) = "toAvanti()" [disabled]="!typeForm.valid">Salva</button>
+<div [formGroup] = "typeForm" class="margin">
+    <h2>Tipo di Attività</h2>
+    <div class="form">
+        <div class="flex">
+            <div class="cq">
+                <label for="code">Codice Attività:</label>
+                <input type="number" formControlName="code">
+            </div>
+            <div class="cq">
+                <textarea type="text" formControlName="desc" placeholder="Descrizione.." class="desc"></textarea>
+            </div>
+        </div>
+        <div class="bt">
+            <button (click) = "toIndietro()">Indietro</button>
+            <button (click) = "toAvanti()" [disabled]="!typeForm.valid">Salva</button>
+        </div>
+    </div>
 </div>

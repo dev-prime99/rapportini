@@ -1,19 +1,21 @@
-<div>Lista Attività</div>
-<div style="float:right;">
-    <button (click) = "resetActivity()" >Reset</button> 
-    <button (click) = "newActivity()" >Aggiungi</button>
+<div class="intestazione">
+    <h2>Lista Attività</h2>
+    <div>
+        <button (click) = "resetActivity()" >Reset</button> 
+        <button (click) = "newActivity()" >Aggiungi</button>
+    </div>
 </div>
-<div>
+<div class="tabella">
     <table >
         <thead>
             <tr>
-                <th>Identity</th>
+                <th class="identity">Identity</th>
                 <th>Cliente</th>
                 <th>Attivita</th>
                 <th>Progetto</th>
-                <th>Data</th>
-                <th>Quantità ore</th>
-                <th>Descrizione</th>
+                <th class="data">Data</th>
+                <th class="hours">Quantità ore</th>
+                <th class="desc">Descrizione</th>
             </tr>
         </thead>
         <tbody>
@@ -24,9 +26,11 @@
                 <td>{{row.project}}</td>
                 <td>{{row.date}}</td>
                 <td>{{row.hours}}</td>
-                <td>{{row.desc}}</td>
-                <td><button (click)="editActivity(row)">Modifica</button></td>
-                <td><button (click)="deleteActivity(row)">Elimina</button></td>
+                <td class="desc">{{row.desc}}</td>
+                <td class="bt_list">
+                    <button (click)="editActivity(row)">Modifica</button>
+                    <button (click)="deleteActivity(row)">Elimina</button>
+                </td>
             </tr>
         </tbody>
     </table>

@@ -14,8 +14,9 @@ import { ProjectDto } from 'src/app/models/project-dto';
 @Component({
   selector: 'app-activity',
   templateUrl: './activity.component.html',
-  styles: ['div:first-child{ padding: 0 10px }']
+  styleUrls: ['./activity.component.scss']
 })
+
 export class ActivityComponent implements OnInit {
 
   activityForm: FormGroup;

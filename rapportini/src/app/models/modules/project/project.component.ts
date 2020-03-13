@@ -7,7 +7,7 @@ import { mapDataFromModel } from 'src/app/models/functions/functions';
 @Component({
   selector: 'app-project',
   templateUrl: './project.component.html',
-  styles: ['div:first-child{ padding-left: 10px; }']
+  styles: ['']
 })
 export class ProjectComponent implements OnInit {
 

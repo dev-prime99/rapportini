@@ -1,13 +1,15 @@
-<div>Lista Anagrafiche</div>
-<div style="float:right;">
-    <button (click) = "resetAnagrafica()" >Reset</button>  
-    <button (click) = "newAnagrafica()" >Aggiungi</button>
+<div class="intestazione">
+    <h2>Lista Anagrafiche</h2>
+    <div>
+        <button (click) = "resetAnagrafica()" >Reset</button>  
+        <button (click) = "newAnagrafica()" >Aggiungi</button>
+    </div>
 </div>
-<div>
+<div class="tabella">
     <table >
         <thead>
             <tr>
-              <th>Identity</th>
+              <th class="identity">Identity</th>
               <th>Cliente</th>
               <th>Tipo di cliente</th>
               <th>Città</th>
@@ -19,8 +21,10 @@
                 <td>{{row.name}}</td>
                 <td>{{row.type}}</td>
                 <td>{{row.city}}</td>
-                <td><button (click)="editAnagrafica(row)">Modifica</button></td>
-                <td><button (click)="deleteAnagrafica(row)">Elimina</button></td>
+                <td class="bt_list">
+                    <button (click)="editAnagrafica(row)">Modifica</button>
+                    <button (click)="deleteAnagrafica(row)">Elimina</button>
+                </td>
             </tr>
         </tbody>
     </table>

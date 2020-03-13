@@ -6,3 +6,135 @@
     box-sizing: border-box;
     font-family: sans-serif;
 }
+
+.margin{
+    position: relative;
+    margin: 15px 30px;
+    h2{
+        color: #516F7D;
+        padding: 10px 0;
+        border-bottom: solid 2px #516F7D;
+    }
+    .form{
+        margin-top: 30px;
+        .flex{
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            .cq{
+                width: 45%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                label{
+                    font-size: 18px;
+                    color: #516F7D;
+                }
+                select{
+                    width: 50%;
+                    height: 30px;
+                    text-align-last: center;
+                }
+                input{
+                    width: 50%;
+                    height: 30px;
+                    text-align-last: center;
+                }
+                .desc{
+                    min-width: 100%;
+                    min-height: 30px;
+                    height: 30px;
+                    width: 100%;
+                    text-align-last: left;
+                    padding: 5px 10px 0 10px;
+                }
+            }
+        }
+        .bt{
+            position: absolute;
+            right: 0;
+            top: 10px;
+        }
+    }
+}
+
+.intestazione{
+    margin: 0 30px;
+    margin-top: 10px;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #516F7D;
+    h2{
+        color: #516F7D;
+    }
+}
+
+.tabella{
+    margin: 15px 30px;
+    table{
+        width: 100%;
+        thead{
+            margin-bottom: 5px;
+            tr{
+                background-color: #2C637D;
+                color: #ffffff;
+                margin: 0;
+                th{
+                    width: 12%;
+                    padding: 10px 0 15px 0;
+                    text-align: center;
+                    // border: 1px solid black;
+                    &.identity{
+                        width: 6%;
+                    }
+                    &.data{
+                        width: 9%;
+                    }
+                    &.hours{
+                        width: 9%;
+                    }
+                    &.desc{
+                        width: 30%;
+                    }
+                }
+            }
+        }
+        tbody{
+            tr{
+                td{
+                    padding: 10px 0;
+                    background-color: #A4E1FD;
+                    text-align: center;
+                    &.desc{
+                        text-align: left;
+                        padding: 10px 16px;
+                    }
+                    &.bt_list{
+                        background: none;
+                        text-align: right;
+                        display: table-cell;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+button{
+    padding: 6px 10px;
+    border: none;
+    border-radius: 2rem;
+    background-color: #47A0C9;
+    color: white;
+    cursor: pointer;
+    &:first-child{
+        margin-right: 10px;
+    }
+    &:hover{
+        background-color: #2C637D;
+        color: #ffffff;
+    }
+}

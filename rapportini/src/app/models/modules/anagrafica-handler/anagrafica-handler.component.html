@@ -1,11 +1,23 @@
-<div [formGroup] = "anagraficaForm">
-    <h3>Anagrafica</h3>
-        <label for="name">Nome</label>
-        <div><input type="text" formControlName="name"></div>
-        <label for="type">Tipo di Cliente</label>
-        <div><input type="text" formControlName="type"></div>
-        <label for="city">Città</label>
-        <div><input type="text" formControlName="city"></div>
-    <button (click) = "toIndietro()">Indietro</button>
-    <button (click) = "toSave()" [disabled]="!anagraficaForm.valid">Salva</button>
+<div [formGroup] = "anagraficaForm" class="margin">
+    <h2>Anagrafica</h2>
+    <div class="form">
+        <div class="flex">
+            <div class="cq">
+                <label for="name">Nome:</label>
+                <input type="text" formControlName="name">
+            </div>
+            <div class="cq">
+                <label for="type">Tipo di Cliente:</label>
+                <input type="text" formControlName="type">
+            </div>
+            <div class="cq">
+                <label for="city">Città:</label>
+                <input type="text" formControlName="city">
+            </div>
+        </div>
+        <div class="bt">
+            <button (click) = "toIndietro()">Indietro</button>
+            <button (click) = "toSave()" [disabled]="!anagraficaForm.valid">Salva</button>
+        </div>
+    </div>
 </div>
