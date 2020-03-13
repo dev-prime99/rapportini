@@ -36,4 +36,8 @@ export class ProjectListComponent implements OnInit {
     this.route.navigateByUrl('project/'+ana.identity);
   }
 
+  deleteProject(ana:ProjectDto){
+    this.prjService.delProject(ana)
+  }
+
 }

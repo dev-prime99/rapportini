@@ -36,4 +36,8 @@ export class TypeActivityListComponent implements OnInit {
     this.route.navigateByUrl('type-activity/'+ana.identity);
   }
 
+  deleteType(ana:TypeActivityDto){
+    this.typeAcService.delTypeAc(ana)
+  }
+
 }

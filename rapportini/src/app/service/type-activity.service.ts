@@ -74,4 +74,21 @@ export class TypeActivityService {
     localStorage.setItem("project-list",JSON.stringify(this.typeList));
   }
 
+  delTypeAc(ana:TypeActivityDto){
+    var i = 0;
+    var found = false;
+    while(this.typeList[i]){
+      if(this.typeList[i].identity==ana.identity){
+        found = true;
+        break;
+      }
+      i++;
+    }
+    if(found){
+    this.typeList.splice(i,1); 
+    localStorage.setItem("anagrafica-list",JSON.stringify(this.typeList));
+    }
+    
+  }
+
 }

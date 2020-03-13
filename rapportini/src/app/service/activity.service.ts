@@ -66,16 +66,28 @@ export class ActivityService {
   updateActivity(ana:ActivityDto){
     var i = 0;
     while(this.activityList[i]){
-      console.log(this.activityList[i]);
-      
       if(this.activityList[i].identity==ana.identity){
-        updateData(this.activityList[i],ana);
-        console.log(this.activityList[i],ana);
-        
+        updateData(this.activityList[i],ana); 
       }
       i++;
     }
     localStorage.setItem("activity-list",JSON.stringify(this.activityList));
+  }
+
+  delActivity(ana:ActivityDto){
+    var i = 0;
+    var found = false;
+    while(this.activityList[i]){
+      if(this.activityList[i].identity==ana.identity){
+        found = true;
+        break;
+      }
+      i++;
+    }
+    if(found){
+    this.activityList.splice(i,1); 
+    localStorage.setItem("anagrafica-list",JSON.stringify(this.activityList));
+    }
     
   }
 

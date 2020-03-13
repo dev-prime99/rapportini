@@ -77,7 +77,24 @@ export class AnagraficaService {
       }
       i++;
     }
-    localStorage.setItem("activity-list",JSON.stringify(this.anaList));
+    localStorage.setItem("anagrafica-list",JSON.stringify(this.anaList));
+    
+  }
+
+  delAnagrafica(ana:AnagraficaDto){
+    var i = 0;
+    var found = false;
+    while(this.anaList[i]){
+      if(this.anaList[i].identity==ana.identity){
+        found = true;
+        break;
+      }
+      i++;
+    }
+    if(found){
+    this.anaList.splice(i,1); 
+    localStorage.setItem("anagrafica-list",JSON.stringify(this.anaList));
+    }
     
   }
 

@@ -72,6 +72,23 @@ export class ProjectService {
       i++;
     }
     localStorage.setItem("project-list",JSON.stringify(this.prjList));
+  }
+
+  delProject(ana:ProjectDto){
+    var i = 0;
+    var found = false;
+    while(this.prjList[i]){
+      if(this.prjList[i].identity==ana.identity){
+        found = true;
+        break;
+      }
+      i++;
+    }
+    if(found){
+    this.prjList.splice(i,1); 
+    localStorage.setItem("anagrafica-list",JSON.stringify(this.prjList));
+    }
     
   }
+
 }

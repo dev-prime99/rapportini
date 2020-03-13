@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AnagraficaService } from 'src/app/service/anagrafica.service';
 import { AnagraficaDto } from 'src/app/models/anagrafica-dto';
+import { __values } from 'tslib';
 
 @Component({
   selector: 'app-anagrafica-list',
@@ -32,8 +33,11 @@ export class AnagraficaListComponent implements OnInit {
   }
 
   editAnagrafica(ana:AnagraficaDto){
-    // console.log(ana);
     this.route.navigateByUrl('anagrafica/'+ana.identity);
+  }
+
+  deleteAnagrafica(ana:AnagraficaDto){
+    this.anaService.delAnagrafica(ana);
   }
   
 }

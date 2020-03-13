@@ -35,5 +35,9 @@ export class ActivityListComponent implements OnInit {
     // console.log(ana);
     this.route.navigateByUrl('activity/'+ana.identity);
   }
+
+  deleteActivity(ana:ActivityDto){
+    this.actService.delActivity(ana);
+  }
   
 }
