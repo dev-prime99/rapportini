@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
-import { ProjectService } from 'src/app/service/project.service';
-import { ProjectDto } from 'src/app/models/project-dto';
+import { ProjectService } from '../../../service/project.service';
+import { ProjectDto } from '../../project-dto';
 
 @Component({
   selector: 'app-project-list',

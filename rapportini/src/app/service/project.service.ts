@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ProjectDto } from 'src/app/models/project-dto';
+import { ProjectDto } from '../models/project-dto';
 import { first  } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { updateData } from '../models/functions/functions';

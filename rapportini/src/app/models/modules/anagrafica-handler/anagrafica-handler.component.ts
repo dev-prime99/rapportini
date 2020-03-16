@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AnagraficaService } from 'src/app/service/anagrafica.service';
-import { mapDataFromModel } from 'src/app/models/functions/functions';
+import { AnagraficaService } from '../../../service/anagrafica.service';
+import { mapDataFromModel } from '../../functions/functions';
 
 // ``
 

@@ -1,8 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { TypeActivityService } from 'src/app/service/type-activity.service';
-import { mapDataFromModel } from 'src/app/models/functions/functions';
+import { TypeActivityService } from '../../../service/type-activity.service';
+import { mapDataFromModel } from '../../functions/functions';
 
 @Component({
   selector: 'app-type-activity',

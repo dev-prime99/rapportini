@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AnagraficaService } from 'src/app/service/anagrafica.service';
-import { AnagraficaDto } from 'src/app/models/anagrafica-dto';
+import { AnagraficaService } from '../../../service/anagrafica.service';
+import { AnagraficaDto } from '../../anagrafica-dto';
 import { __values } from 'tslib';
 
 @Component({

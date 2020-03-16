@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { first  } from 'rxjs/operators'
-import { ActivityDto } from 'src/app/models/activity-dto';
+import { ActivityDto } from '../models/activity-dto';
 import { updateData } from '../models/functions/functions';
 
 @Injectable({

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { first  } from 'rxjs/operators'
-import { AnagraficaDto } from 'src/app/models/anagrafica-dto';
+import { AnagraficaDto } from '../models/anagrafica-dto';
 import { updateData } from '../models/functions/functions';
 
 

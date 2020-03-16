@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ActivityService } from 'src/app/service/activity.service';
-import { AnagraficaService } from 'src/app/service/anagrafica.service';
-import { mapDataFromModel } from 'src/app/models/functions/functions';
-import { AnagraficaDto } from 'src/app/models/anagrafica-dto';
-import { TypeActivityService } from 'src/app/service/type-activity.service';
-import { TypeActivityDto } from 'src/app/models/type_activity-dto';
-import { ProjectService } from 'src/app/service/project.service';
-import { ProjectDto } from 'src/app/models/project-dto';
+import { ActivityService } from '../../../service/activity.service';
+import { mapDataFromModel } from '../../functions/functions';
+import { AnagraficaService } from '../../../service/anagrafica.service';
+import { AnagraficaDto } from '../../anagrafica-dto';
+import { TypeActivityService } from '../../../service/type-activity.service';
+import { TypeActivityDto } from '../../type_activity-dto';
+import { ProjectService } from '../../../service/project.service';
+import { ProjectDto } from '../../project-dto';
 
 
 @Component({

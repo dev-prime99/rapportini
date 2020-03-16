@@ -1,8 +1,8 @@
 import { Component, OnInit} from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ProjectService } from 'src/app/service/project.service';
-import { mapDataFromModel } from 'src/app/models/functions/functions';
+import { ProjectService } from '../../../service/project.service';
+import { mapDataFromModel } from '../../functions/functions';
 
 @Component({
   selector: 'app-project',
