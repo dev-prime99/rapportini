@@ -1,11 +1,15 @@
 
 <nav>
-    <div>
-        <h1><a routerLink="/">Rapportini</a></h1>
-    </div>
-    <div>
-        <button mat-raised-button color="primary" (click) = "toRegistry()">Anagrafiche</button>
-        <button mat-raised-button color="primary" (click) = "toProject()">Progetti</button>
-        <button mat-raised-button color="primary" (click) = "toActivity()">Attività</button>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h1><a routerLink="/">Rapportini</a></h1>
+            </div>
+            <div class="col-lg-6 bt_int">
+                <button mat-raised-button color="primary" (click) = "toActivity()">Attività</button>
+                <button mat-raised-button color="primary" (click) = "toProject()">Progetti</button>
+                <button mat-raised-button color="primary" (click) = "toRegistry()">Anagrafiche</button>
+            </div>
+        </div>
     </div>
 </nav>

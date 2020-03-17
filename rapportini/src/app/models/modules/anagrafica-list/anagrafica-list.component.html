@@ -1,12 +1,14 @@
-<div>
-    <h2>Lista Anagrafiche</h2>
-    <div>
-        <button mat-raised-button color="warn" (click) = "resetAnagrafica()" >Reset</button>  
-        <button mat-raised-button color="primary" (click) = "newAnagrafica()" >Aggiungi</button>
+<div class="container intestazione">
+    <div class="row">
+      <h2 class="col-lg-6">Lista Anagrafiche</h2>
+      <div class="col-lg-6 bt_int">
+          <button mat-raised-button color="warn" (click) = "resetAnagrafica()" >Reset</button>  
+          <button mat-raised-button color="primary" (click) = "newAnagrafica()" >Aggiungi</button>
+      </div>
     </div>
 </div>
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table mat-table [dataSource]="dataSource" class="container">
 
     <ng-container matColumnDef="identity">
       <th mat-header-cell *matHeaderCellDef> No. </th>
@@ -28,17 +30,17 @@
       <td mat-cell *matCellDef="let row"> {{row.city}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="bt1">
+    <ng-container matColumnDef="bt1" class="bt1">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let row">
-            <button mat-raised-button color="accent" (click)="editAnagrafica(row)">Modifica</button>
+            <button class="bt_list" mat-raised-button color="accent" (click)="editAnagrafica(row)">Modifica</button>
         </td>
     </ng-container>
 
-    <ng-container matColumnDef="bt2">
+    <ng-container matColumnDef="bt2" class="bt2">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let row">
-            <button mat-raised-button color="warn" (click)="deleteAnagrafica(row)">Elimina</button>
+            <button class="bt_list" mat-raised-button color="warn" (click)="deleteAnagrafica(row)">Elimina</button>
         </td>
     </ng-container>
   

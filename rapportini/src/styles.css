@@ -1,0 +1,19 @@
+
+body{
+    height: 100vh;
+}
+
+div.intestazione{
+    margin-bottom: 20px;
+}
+
+.bt_int button{
+    float: right;
+    margin-left: 12px;
+}
+
+button.bt_list{
+    padding: 0 10px;
+    font-size: 12px;
+    float: right;
+}

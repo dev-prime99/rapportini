@@ -17,15 +17,11 @@ export class ActivityListComponent implements OnInit {
 
   constructor(private route: Router, private actService: ActivityService) { }
   ngOnInit(): void {
-    this.actService.getActivityList().subscribe(x => {
-      this.rows = x;
-    });
+
   }
   resetActivity() {
     this.actService.resetList();
-    this.actService.getActivityList().subscribe(x => {
-      this.rows = x;
-    });
+    this.dataSource = this.actService.getActivityList();
   }
   newActivity() {
     this.route.navigateByUrl('activity');
@@ -36,5 +32,6 @@ export class ActivityListComponent implements OnInit {
   }
   deleteActivity(ana: ActivityDto) {
     this.actService.delActivity(ana);
+    this.dataSource = this.actService.getActivityList();
   }
 }

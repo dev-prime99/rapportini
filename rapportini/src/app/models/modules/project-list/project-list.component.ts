@@ -18,16 +18,12 @@ export class ProjectListComponent implements OnInit {
   constructor(private route:Router, private prjService:ProjectService) { }
 
   ngOnInit(): void {
-    this.prjService.getProjectList().subscribe(x=>{
-      this.rows = x;
-    });
+
   }
 
   resetProject(){
     this.prjService.resetList();
-    this.prjService.getProjectList().subscribe(x=>{
-      this.rows = x;
-    });
+    this.dataSource = this.prjService.getProjectList()
   }
 
   newProject(){
@@ -40,7 +36,8 @@ export class ProjectListComponent implements OnInit {
   }
 
   deleteProject(ana:ProjectDto){
-    this.prjService.delProject(ana)
+    this.prjService.delProject(ana);
+    this.dataSource = this.prjService.getProjectList()
   }
 
 }

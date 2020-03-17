@@ -22,16 +22,12 @@ export class AnagraficaListComponent implements OnInit {
   constructor(private anaService: AnagraficaService,private route:Router) { }
 
   ngOnInit(): void {
-    this.anaService.getAnagraficaList().subscribe(x=>{
-      this.rows = x;
-    });
+    
   }
 
   resetAnagrafica(){
     this.anaService.resetList();
-    this.anaService.getAnagraficaList().subscribe(x=>{
-      this.rows = x;
-    });
+    this.dataSource = this.anaService.getAnagraficaList()
   }
 
   newAnagrafica(){
@@ -44,6 +40,7 @@ export class AnagraficaListComponent implements OnInit {
 
   deleteAnagrafica(ana:AnagraficaDto){
     this.anaService.delAnagrafica(ana);
+    this.dataSource = this.anaService.getAnagraficaList()
   }
   
 }

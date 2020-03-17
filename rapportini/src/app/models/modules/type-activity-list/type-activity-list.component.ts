@@ -18,16 +18,12 @@ export class TypeActivityListComponent implements OnInit {
   constructor(private route:Router, private typeAcService:TypeActivityService) { }
 
   ngOnInit(): void {
-    this.typeAcService.getTypeList().subscribe(x=>{
-      this.rows = x;
-    });
+
   }
 
   resetActivity(){
     this.typeAcService.resetList();
-    this.typeAcService.getTypeList().subscribe(x=>{
-      this.rows = x;
-    });
+    this.dataSource = this.typeAcService.getTypeList()
   }
 
   newTypeActivity(){
@@ -40,7 +36,8 @@ export class TypeActivityListComponent implements OnInit {
   }
 
   deleteType(ana:TypeActivityDto){
-    this.typeAcService.delTypeAc(ana)
+    this.typeAcService.delTypeAc(ana);
+    this.dataSource = this.typeAcService.getTypeList()
   }
 
 }
