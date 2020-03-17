@@ -12,28 +12,12 @@ nav{
         &:last-child{
             display: flex;
             justify-content: flex-end;
-            button{
-                padding: 5px 10px;
-                margin-left: 15px;
-                background-color: #2C637D;
-                color: #ffffff;
-                font-weight: bold;
-                font-size: 15px;
-                &:first-child{
-                    margin-right: 0px;
-                }
-                &:hover{
-                    background-color: #ffffff;
-                    color: #2C637D;
-                }
-            }
         }
-        h1{
-            
-            a{
-                color: white;
-                text-decoration: none;
-            }
+    }
+    h1{
+        a{
+            color: white;
+            text-decoration: none;
         }
     }
 }

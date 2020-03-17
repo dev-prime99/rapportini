@@ -85,3 +85,7 @@ export class ActivityComponent implements OnInit {
   }
 
 }
+
+export class DatepickerStartViewExample {
+  startDate = new Date(1990, 0, 1);
+}

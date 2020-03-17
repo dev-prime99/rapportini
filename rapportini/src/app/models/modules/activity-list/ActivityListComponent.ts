@@ -11,6 +11,10 @@ import { ActivityDto } from '../../activity-dto';
 })
 export class ActivityListComponent implements OnInit {
   rows: ActivityDto[];
+
+  displayedColumns: string[] = ['identity', 'customer', 'activity', 'project', 'date', 'hours', 'desc', 'bt1', 'bt2'];
+  dataSource = this.actService.getActivityList()
+
   constructor(private route: Router, private actService: ActivityService) { }
   ngOnInit(): void {
     this.actService.getActivityList().subscribe(x => {

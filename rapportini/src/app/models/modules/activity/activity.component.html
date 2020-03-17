@@ -1,44 +1,54 @@
+
 <div [formGroup] = "activityForm" class="margin">
+
     <h2>Attività svolta</h2>
-    <div class="form">
-        <div class="flex">
-            <div class="cq">
-                <label for="customer">Nome:</label>
-                <select formControlName="customer">
-                    <option *ngFor="let row of rows" value="{{row.name}}">{{row.name}}</option>
-                </select>  
-            </div>
-            <div class="cq">
-                <label for="activity">Tipo di Attività:</label>
-                <select formControlName="activity">
-                    <option *ngFor="let car of cars" value="{{car.code}}">{{car.code}}</option>
-                </select>  
-            </div>
-        </div>
-        <div class="flex">
-            <div class="cq">
-                <label for="project">Progetto:</label>
-                <select formControlName="project">
-                    <option *ngFor="let eye of eyes" value="{{eye.code}}">{{eye.code}}</option>
-                </select>  
-            </div>
-            <div class="cq">
-                <label for="date">Data:</label>
-                <input type="date" formControlName="date">
-            </div>
-        </div>
-        <div class="flex">
-            <div class="cq">
-                <label for="hours">Quantità ore:</label>
-                <input type="number" formControlName="hours" min="1">
-            </div>
-            <div class="cq">
-                <textarea formControlName="desc" placeholder="Descrizione.." class="desc"></textarea>
-            </div>
-        </div>
-        <div class="bt">
-            <button (click) = "toIndietro()">Indietro</button>
-            <button (click) = "toSave()" [disabled]="!activityForm.valid">Salva</button>
-        </div>
-    </div>
+
+    <mat-form-field appearance="fill">
+        <mat-label for="customer">Cliente</mat-label>
+        <mat-select formControlName="customer">
+            <mat-option *ngFor="let row of rows" [value]="row.name">
+            {{row.name}}
+        </mat-option>
+    </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label for="activity">Tipo di Attività</mat-label>
+        <mat-select formControlName="activity">
+            <mat-option *ngFor="let car of cars" [value]="car.code">
+            {{car.code}}
+        </mat-option>
+    </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label for="project">Progetto</mat-label>
+        <mat-select formControlName="project">
+            <mat-option *ngFor="let eye of eyes" [value]="eye.code">
+            {{eye.code}}
+        </mat-option>
+    </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label for="date">Scegli una data</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label for="hours">Ore</mat-label>
+        <input matInput type="number" formControlName="hours" min="1">
+        <!-- <span matSuffix>Ore</span> -->
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label for="desc">Descrizione</mat-label>
+        <textarea matInput formControlName="desc"></textarea>
+    </mat-form-field>
+
+    <button mat-raised-button color="warn" (click) = "toIndietro()">Indietro</button>
+    <button mat-raised-button color="primary" (click) = "toSave()" [disabled]="!activityForm.valid">Salva</button>
+
 </div>

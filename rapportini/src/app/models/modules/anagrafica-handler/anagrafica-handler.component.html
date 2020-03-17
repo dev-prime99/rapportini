@@ -1,23 +1,23 @@
+
 <div [formGroup] = "anagraficaForm" class="margin">
     <h2>Anagrafica</h2>
-    <div class="form">
-        <div class="flex">
-            <div class="cq">
-                <label for="name">Nome:</label>
-                <input type="text" formControlName="name">
-            </div>
-            <div class="cq">
-                <label for="type">Tipo di Cliente:</label>
-                <input type="text" formControlName="type">
-            </div>
-            <div class="cq">
-                <label for="city">Città:</label>
-                <input type="text" formControlName="city">
-            </div>
-        </div>
-        <div class="bt">
-            <button (click) = "toIndietro()">Indietro</button>
-            <button (click) = "toSave()" [disabled]="!anagraficaForm.valid">Salva</button>
-        </div>
-    </div>
+
+    <mat-form-field appearance="fill">
+        <mat-label for="name">Nome</mat-label>
+        <input matInput type="text" formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label for="type">Tipo di Cliente</mat-label>
+        <input matInput type="text" formControlName="type">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label for="city">Città</mat-label>
+        <input matInput type="text" formControlName="city">
+    </mat-form-field>
+
+    <button mat-raised-button color="warn" (click) = "toIndietro()">Indietro</button>
+    <button mat-raised-button color="primary" (click) = "toSave()" [disabled]="!anagraficaForm.valid">Salva</button>
+
 </div>

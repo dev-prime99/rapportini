@@ -1,19 +1,18 @@
 
 <div [formGroup] = "typeForm" class="margin">
     <h2>Tipo di Attività</h2>
-    <div class="form">
-        <div class="flex">
-            <div class="cq">
-                <label for="code">Codice Attività:</label>
-                <input type="number" formControlName="code">
-            </div>
-            <div class="cq">
-                <textarea type="text" formControlName="desc" placeholder="Descrizione.." class="desc"></textarea>
-            </div>
-        </div>
-        <div class="bt">
-            <button (click) = "toIndietro()">Indietro</button>
-            <button (click) = "toAvanti()" [disabled]="!typeForm.valid">Salva</button>
-        </div>
-    </div>
+
+    <mat-form-field appearance="fill">
+        <mat-label for="code">Codice Progetto</mat-label>
+        <input matInput type="number" formControlName="code">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label for="desc">Descrizione</mat-label>
+        <textarea matInput formControlName="desc"></textarea>
+    </mat-form-field>
+
+    <button mat-raised-button color="warn" (click) = "toIndietro()">Indietro</button>
+    <button mat-raised-button color="primary" (click) = "toAvanti()" [disabled]="!typeForm.valid">Salva</button>
+
 </div>

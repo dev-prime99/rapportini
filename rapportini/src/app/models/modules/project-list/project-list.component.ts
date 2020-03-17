@@ -6,11 +6,14 @@ import { ProjectDto } from '../../project-dto';
 @Component({
   selector: 'app-project-list',
   templateUrl: './project-list.component.html',
-  styles: []
+  styles: ['table{width: 100%} th{width: calc(100% / 5)}']
 })
 export class ProjectListComponent implements OnInit {
 
   rows:ProjectDto[];
+
+  displayedColumns: string[] = ['identity', 'code', 'desc', 'bt1', 'bt2'];
+  dataSource = this.prjService.getProjectList()
 
   constructor(private route:Router, private prjService:ProjectService) { }
 

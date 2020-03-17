@@ -3,15 +3,21 @@ import { Router } from '@angular/router';
 import { AnagraficaService } from '../../../service/anagrafica.service';
 import { AnagraficaDto } from '../../anagrafica-dto';
 import { __values } from 'tslib';
+import { RowContext } from '@angular/cdk/table';
+
 
 @Component({
   selector: 'app-anagrafica-list',
   templateUrl: './anagrafica-list.component.html',
   styleUrls: ['./anagrafica-list.component.scss']
 })
-export class AnagraficaListComponent implements OnInit {
 
+
+export class AnagraficaListComponent implements OnInit {
   rows:AnagraficaDto[];
+
+  displayedColumns: string[] = ['identity', 'name', 'type', 'city', 'bt1', 'bt2'];
+  dataSource = this.anaService.getAnagraficaList()
 
   constructor(private anaService: AnagraficaService,private route:Router) { }
 
