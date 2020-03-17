@@ -7,6 +7,17 @@ div.intestazione{
     margin-bottom: 20px;
 }
 
+.wt{
+    background-color: #ffffff;
+    padding: 30px 25px;
+}
+
+div.rev button{
+    margin-top: 10px;
+    float: right;
+    margin-left: 12px;
+}
+
 .bt_int button{
     float: right;
     margin-left: 12px;

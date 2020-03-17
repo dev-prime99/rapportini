@@ -7,7 +7,7 @@ import { mapDataFromModel } from '../../functions/functions';
 @Component({
   selector: 'app-type-activity',
   templateUrl: './type-activity.component.html',
-  styles: ['div:first-child{ padding: 0 10px }']
+  styles: ['']
 })
 export class TypeActivityComponent implements OnInit {
 

@@ -1,23 +1,43 @@
+<div class="container intestazione">
+    <div class="row">
+        <h2 class="col-lg-12">Anagrafica</h2>
+    </div>
+</div>
+    
+<div [formGroup] = "anagraficaForm" class="container wt">
 
-<div [formGroup] = "anagraficaForm" class="margin">
-    <h2>Anagrafica</h2>
+    <div class="row">
+        <div class="col-lg-12">
+            <mat-form-field appearance="fill">
+                <mat-label for="name">Nome</mat-label>
+                <input matInput type="text" formControlName="name">
+            </mat-form-field>
+        </div>
+    </div>
 
-    <mat-form-field appearance="fill">
-        <mat-label for="name">Nome</mat-label>
-        <input matInput type="text" formControlName="name">
-    </mat-form-field>
+    <div class="row">
+        <div class="col-lg-12">
+            <mat-form-field appearance="fill">
+                <mat-label for="type">Tipo di Cliente</mat-label>
+                <input matInput type="text" formControlName="type">
+            </mat-form-field>
+        </div>
+    </div>
 
-    <mat-form-field appearance="fill">
-        <mat-label for="type">Tipo di Cliente</mat-label>
-        <input matInput type="text" formControlName="type">
-    </mat-form-field>
+    <div class="row">
+        <div class="col-lg-12">
+            <mat-form-field appearance="fill">
+                <mat-label for="city">Città</mat-label>
+                <input matInput type="text" formControlName="city">
+            </mat-form-field>
+        </div>
+    </div>
 
-    <mat-form-field appearance="fill">
-        <mat-label for="city">Città</mat-label>
-        <input matInput type="text" formControlName="city">
-    </mat-form-field>
-
-    <button mat-raised-button color="warn" (click) = "toIndietro()">Indietro</button>
-    <button mat-raised-button color="primary" (click) = "toSave()" [disabled]="!anagraficaForm.valid">Salva</button>
+    <div class="row">
+        <div class="col-lg-12 rev">
+            <button mat-raised-button color="primary" (click) = "toSave()" [disabled]="!anagraficaForm.valid">Salva</button>
+            <button mat-raised-button color="warn" (click) = "toIndietro()">Indietro</button>
+        </div>
+    </div>
 
 </div>
