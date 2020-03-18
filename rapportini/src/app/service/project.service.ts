@@ -86,7 +86,7 @@ export class ProjectService {
     }
     if(found){
     this.prjList.splice(i,1); 
-    localStorage.setItem("anagrafica-list",JSON.stringify(this.prjList));
+    localStorage.setItem("project-list",JSON.stringify(this.prjList));
     }
     
   }

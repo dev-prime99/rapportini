@@ -1,5 +1,6 @@
 
 import { Component, OnInit, ViewChild } from '@angular/core';
+import {MatSort} from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
@@ -18,6 +19,7 @@ export class ActivityListComponent implements OnInit {
   dataSource = null;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort
   
   constructor(private route: Router, private actService: ActivityService) { }
 
@@ -26,6 +28,7 @@ export class ActivityListComponent implements OnInit {
       this.dataSource = new MatTableDataSource(x);
     });
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   applyFilter(event: Event) {
