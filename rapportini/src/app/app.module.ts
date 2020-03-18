@@ -58,7 +58,7 @@ import { TypeActivityListComponent } from './models/modules/type-activity-list/t
     SharedModule,
     RouterModule,
     AppRoutes,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     {
