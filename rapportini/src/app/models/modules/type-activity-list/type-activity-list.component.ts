@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { TypeActivityService } from '../../../service/type-activity.service';
 import { TypeActivityDto } from '../../type_activity-dto';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-type-activity-list',
@@ -20,13 +21,26 @@ export class TypeActivityListComponent implements OnInit {
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
-  constructor(private route:Router, private typeAcService:TypeActivityService) { }
+  constructor(private route:Router, private typeAcService:TypeActivityService,  public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.typeAcService.getTypeList().subscribe(x=>{
       this.dataSource = new MatTableDataSource(x);
     });
     this.dataSource.paginator = this.paginator;
+  }
+
+  openDialog(ana: TypeActivityDto) {
+    const dialogRef = this.dialog.open(TypeActivityListDialog);
+
+    dialogRef.afterClosed().subscribe(result => {
+      // console.log(`Dialog result: ${result}`);
+      if (result){
+        // console.log("funziona");        
+        this.typeAcService.delTypeAc(ana);
+        this.dataSource = this.typeAcService.getTypeList();
+      }
+    });
   }
 
   applyFilter(event: Event) {
@@ -52,5 +66,13 @@ export class TypeActivityListComponent implements OnInit {
     this.typeAcService.delTypeAc(ana);
     this.dataSource = this.typeAcService.getTypeList()
   }
+
+}
+
+@Component({
+  selector: 'type-activity-list-dialog',
+  templateUrl: 'type-activity-list-dialog.html',
+})
+export class TypeActivityListDialog {
 
 }

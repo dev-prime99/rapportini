@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ProjectService } from '../../../service/project.service';
 import { ProjectDto } from '../../project-dto';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-project-list',
@@ -22,7 +23,7 @@ export class ProjectListComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort
 
-  constructor(private route:Router, private prjService:ProjectService) { }
+  constructor(private route:Router, private prjService:ProjectService,  public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.prjService.getProjectList().subscribe(x=>{
@@ -30,6 +31,19 @@ export class ProjectListComponent implements OnInit {
     });
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  }
+
+  openDialog(ana: ProjectDto) {
+    const dialogRef = this.dialog.open(ProjectListDialog);
+
+    dialogRef.afterClosed().subscribe(result => {
+      // console.log(`Dialog result: ${result}`);
+      if (result){
+        // console.log("funziona");        
+        this.prjService.delProject(ana);
+        this.dataSource = this.prjService.getProjectList();
+      }
+    });
   }
 
   applyFilter(event: Event) {
@@ -55,5 +69,13 @@ export class ProjectListComponent implements OnInit {
     this.prjService.delProject(ana);
     this.dataSource = this.prjService.getProjectList()
   }
+
+}
+
+@Component({
+  selector: 'project-list-dialog',
+  templateUrl: 'project-list-dialog.html',
+})
+export class ProjectListDialog {
 
 }

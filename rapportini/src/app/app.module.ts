@@ -14,20 +14,21 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 // import { AppSidebarComponent } from './layouts/full/sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DemoMaterialModule } from './demo-material-module';
+import {MatDialogModule} from "@angular/material";
 
 import { SharedModule } from './shared/shared.module';
 import { SpinnerComponent } from './shared/spinner.component';
 
 import { InitPageComponent } from './init-page/init-page.component';
 import { TopBarComponent } from './models/top-bar/top-bar.component';
-import { ActivityListComponent } from './models/modules/activity-list/ActivityListComponent';
+import { ActivityListComponent, ActivityListDialog } from './models/modules/activity-list/ActivityListComponent';
 import { ActivityComponent } from './models/modules/activity/activity.component';
 import { AnagraficaHandlerComponent } from './models/modules/anagrafica-handler/anagrafica-handler.component';
-import { AnagraficaListComponent } from './models/modules/anagrafica-list/anagrafica-list.component';
+import { AnagraficaListComponent, AnagraficaListDialog } from './models/modules/anagrafica-list/anagrafica-list.component';
 import { ProjectComponent } from './models/modules/project/project.component';
-import { ProjectListComponent } from './models/modules/project-list/project-list.component';
+import { ProjectListComponent, ProjectListDialog } from './models/modules/project-list/project-list.component';
 import { TypeActivityComponent } from './models/modules/type-activity/type-activity.component';
-import { TypeActivityListComponent } from './models/modules/type-activity-list/type-activity-list.component';
+import { TypeActivityListComponent, TypeActivityListDialog } from './models/modules/type-activity-list/type-activity-list.component';
 
 
 @NgModule({
@@ -46,19 +47,34 @@ import { TypeActivityListComponent } from './models/modules/type-activity-list/t
     ProjectComponent,
     ProjectListComponent,
     TypeActivityComponent,
-    TypeActivityListComponent
+    TypeActivityListComponent,
+    ActivityListDialog,
+    AnagraficaListDialog,
+    ProjectListDialog,
+    TypeActivityListComponent,
+    TypeActivityListDialog
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    DemoMaterialModule,
     FormsModule,
     FlexLayoutModule,
     HttpClientModule,
     SharedModule,
     RouterModule,
     AppRoutes,
-    ReactiveFormsModule,
+    DemoMaterialModule,
+    MatDialogModule,
+    ReactiveFormsModule
+  ],
+  entryComponents: [
+    ActivityListComponent,
+    ActivityListDialog,
+    AnagraficaListComponent,
+    AnagraficaListDialog,
+    ProjectComponent,
+    ProjectListDialog,
+    TypeActivityListDialog
   ],
   providers: [
     {
@@ -66,6 +82,12 @@ import { TypeActivityListComponent } from './models/modules/type-activity-list/t
       useClass: PathLocationStrategy
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent,
+    ActivityListDialog,
+    AnagraficaListDialog,
+    ProjectListDialog,
+    TypeActivityListDialog
+  ],
 })
 export class AppModule {}

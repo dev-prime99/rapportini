@@ -38,7 +38,7 @@ export class ActivityComponent implements OnInit {
       project: [null, Validators.required],
       date: [null,Validators.required],
       hours: [null,Validators.required],
-      desc: [null]
+      desc: [null, Validators.required]
     });
   }
 

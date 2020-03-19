@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { AnagraficaService } from '../../../service/anagrafica.service';
 import { AnagraficaDto } from '../../anagrafica-dto';
 import { __values } from 'tslib';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class AnagraficaListComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort
 
-  constructor(private anaService: AnagraficaService,private route:Router) { }
+  constructor(private anaService: AnagraficaService,private route:Router, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.anaService.getAnagraficaList().subscribe(x=>{
@@ -33,6 +34,19 @@ export class AnagraficaListComponent implements OnInit {
     });
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  }
+
+  openDialog(ana: AnagraficaDto) {
+    const dialogRef = this.dialog.open(AnagraficaListDialog);
+
+    dialogRef.afterClosed().subscribe(result => {
+      // console.log(`Dialog result: ${result}`);
+      if (result){
+        // console.log("funziona");        
+        this.anaService.delAnagrafica(ana);
+        this.dataSource = this.anaService.getAnagraficaList();
+      }
+    });
   }
 
   applyFilter(event: Event) {
@@ -53,9 +67,12 @@ export class AnagraficaListComponent implements OnInit {
     this.route.navigateByUrl('anagrafica/'+ana.identity);
   }
 
-  deleteAnagrafica(ana:AnagraficaDto){
-    this.anaService.delAnagrafica(ana);
-    this.dataSource = this.anaService.getAnagraficaList()
-  }
-  
+}
+
+@Component({
+  selector: 'anagrafica-list-dialog',
+  templateUrl: 'anagrafica-list-dialog.html',
+})
+export class AnagraficaListDialog {
+
 }
