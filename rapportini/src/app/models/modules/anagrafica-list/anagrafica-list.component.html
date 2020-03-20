@@ -2,7 +2,7 @@
     <div class="row">
       <h2 class="col-lg-6">Lista Anagrafiche</h2>
       <div class="col-lg-6 bt_int">
-          <button mat-raised-button color="warn" (click) = "resetAnagrafica()" >Reset</button>  
+          <button class="bt_list" mat-raised-button color="warn" (click)="openDialogRes()">Reset</button>
           <button mat-raised-button color="primary" (click) = "newAnagrafica()" >Aggiungi</button>
       </div>
     </div>
@@ -47,7 +47,7 @@
         <ng-container matColumnDef="bt2" class="bt2">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let row">
-          <button class="bt_list" mat-raised-button color="warn" (click)="openDialog(row)">Elimina</button>
+          <button class="bt_list" mat-raised-button color="warn" (click)="openDialogRes(row)">Elimina</button>
         </td>
     </ng-container>
     

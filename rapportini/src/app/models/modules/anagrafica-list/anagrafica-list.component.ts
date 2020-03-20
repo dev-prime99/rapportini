@@ -36,7 +36,7 @@ export class AnagraficaListComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  openDialog(ana: AnagraficaDto) {
+  openDialogDel(ana: AnagraficaDto) {
     const dialogRef = this.dialog.open(AnagraficaListDialog);
 
     dialogRef.afterClosed().subscribe(result => {
@@ -49,16 +49,24 @@ export class AnagraficaListComponent implements OnInit {
     });
   }
 
+  openDialogRes() {
+    const dialogRef = this.dialog.open(AnagraficaListDialog);
+
+    dialogRef.afterClosed().subscribe(result => {
+      // console.log(`Dialog result: ${result}`);
+      if (result){
+        // console.log("funziona");        
+        this.anaService.resetList();
+        this.dataSource = this.anaService.getAnagraficaList();
+      }
+    });
+  }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
-  resetAnagrafica(){
-    this.anaService.resetList();
-    this.dataSource = this.anaService.getAnagraficaList()
-  }
-
+  
   newAnagrafica(){
     this.route.navigateByUrl('anagrafica')
   }
@@ -71,7 +79,7 @@ export class AnagraficaListComponent implements OnInit {
 
 @Component({
   selector: 'anagrafica-list-dialog',
-  templateUrl: 'anagrafica-list-dialog.html',
+  templateUrl: '../_dialog/delete-reset-dialog.html',
 })
 export class AnagraficaListDialog {
 

@@ -33,7 +33,7 @@ export class ProjectListComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  openDialog(ana: ProjectDto) {
+  openDialogDel(ana: ProjectDto) {
     const dialogRef = this.dialog.open(ProjectListDialog);
 
     dialogRef.afterClosed().subscribe(result => {
@@ -46,14 +46,22 @@ export class ProjectListComponent implements OnInit {
     });
   }
 
+  openDialogRes() {
+    const dialogRef = this.dialog.open(ProjectListDialog);
+
+    dialogRef.afterClosed().subscribe(result => {
+      // console.log(`Dialog result: ${result}`);
+      if (result){
+        // console.log("funziona");        
+        this.prjService.resetList();
+        this.dataSource = this.prjService.getProjectList();
+      }
+    });
+  }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-
-  resetProject(){
-    this.prjService.resetList();
-    this.dataSource = this.prjService.getProjectList()
   }
 
   newProject(){
@@ -65,16 +73,11 @@ export class ProjectListComponent implements OnInit {
     this.route.navigateByUrl('project/'+ana.identity);
   }
 
-  deleteProject(ana:ProjectDto){
-    this.prjService.delProject(ana);
-    this.dataSource = this.prjService.getProjectList()
-  }
-
 }
 
 @Component({
   selector: 'project-list-dialog',
-  templateUrl: 'project-list-dialog.html',
+  templateUrl: '../_dialog/delete-reset-dialog.html',
 })
 export class ProjectListDialog {
 

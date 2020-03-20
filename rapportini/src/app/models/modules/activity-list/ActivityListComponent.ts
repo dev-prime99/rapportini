@@ -32,7 +32,7 @@ export class ActivityListComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  openDialog(ana: ActivityDto) {
+  openDialogDel(ana: ActivityDto) {
     const dialogRef = this.dialog.open(ActivityListDialog);
 
     dialogRef.afterClosed().subscribe(result => {
@@ -45,14 +45,22 @@ export class ActivityListComponent implements OnInit {
     });
   }
 
+  openDialogRes() {
+    const dialogRef = this.dialog.open(ActivityListDialog);
+
+    dialogRef.afterClosed().subscribe(result => {
+      // console.log(`Dialog result: ${result}`);
+      if (result){
+        // console.log("funziona");        
+        this.actService.resetList();
+        this.dataSource = this.actService.getActivityList();
+      }
+    });
+  }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-
-  resetActivity() {
-    this.actService.resetList();
-    this.dataSource = this.actService.getActivityList();
   }
 
   newActivity() {
@@ -68,7 +76,7 @@ export class ActivityListComponent implements OnInit {
 
 @Component({
   selector: 'activity-list-dialog',
-  templateUrl: 'activity-list-dialog.html',
+  templateUrl: '../_dialog/delete-reset-dialog.html',
 })
 export class ActivityListDialog {
 

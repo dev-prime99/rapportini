@@ -30,7 +30,7 @@ export class TypeActivityListComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  openDialog(ana: TypeActivityDto) {
+  openDialogDel(ana: TypeActivityDto) {
     const dialogRef = this.dialog.open(TypeActivityListDialog);
 
     dialogRef.afterClosed().subscribe(result => {
@@ -43,14 +43,22 @@ export class TypeActivityListComponent implements OnInit {
     });
   }
 
+  openDialogRes() {
+    const dialogRef = this.dialog.open(TypeActivityListDialog);
+
+    dialogRef.afterClosed().subscribe(result => {
+      // console.log(`Dialog result: ${result}`);
+      if (result){
+        // console.log("funziona");        
+        this.typeAcService.resetList();
+        this.dataSource = this.typeAcService.getTypeList();
+      }
+    });
+  }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-
-  resetActivity(){
-    this.typeAcService.resetList();
-    this.dataSource = this.typeAcService.getTypeList()
   }
 
   newTypeActivity(){
@@ -62,16 +70,11 @@ export class TypeActivityListComponent implements OnInit {
     this.route.navigateByUrl('type-activity/'+ana.identity);
   }
 
-  deleteType(ana:TypeActivityDto){
-    this.typeAcService.delTypeAc(ana);
-    this.dataSource = this.typeAcService.getTypeList()
-  }
-
 }
 
 @Component({
   selector: 'type-activity-list-dialog',
-  templateUrl: 'type-activity-list-dialog.html',
+  templateUrl: '../_dialog/delete-reset-dialog.html',
 })
 export class TypeActivityListDialog {
 
