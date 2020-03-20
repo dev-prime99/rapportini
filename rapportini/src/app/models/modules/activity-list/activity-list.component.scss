@@ -5,3 +5,10 @@ table{
         width: calc(100% / 9);
     }
 }
+
+div.puntini{
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}

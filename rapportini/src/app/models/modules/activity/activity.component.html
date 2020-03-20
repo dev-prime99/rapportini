@@ -12,7 +12,7 @@
             <mat-form-field appearance="fill">
                 <mat-label for="customer">Cliente</mat-label>
                 <mat-select formControlName="customer">
-                    <mat-option *ngFor="let row of rows" [value]="row.name">
+                    <mat-option *ngFor="let row of rows" [value]="row">
                         {{row.name}}
                     </mat-option>
                 </mat-select>
@@ -22,7 +22,7 @@
             <mat-form-field appearance="fill">
                 <mat-label for="activity">Tipo di Attività</mat-label>
                 <mat-select formControlName="activity">
-                    <mat-option *ngFor="let car of cars" [value]="car.code">
+                    <mat-option *ngFor="let car of cars" [value]="car">
                         {{car.code}} - {{car.desc}}
                     </mat-option>
                 </mat-select>
@@ -35,7 +35,7 @@
             <mat-form-field appearance="fill">
                 <mat-label for="project">Progetto</mat-label>
                 <mat-select formControlName="project">
-                    <mat-option *ngFor="let eye of eyes" [value]="eye.code">
+                    <mat-option *ngFor="let eye of eyes" [value]="eye">
                         {{eye.code}} - {{eye.desc}}
                     </mat-option>
                 </mat-select>

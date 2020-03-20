@@ -13,7 +13,7 @@ export class AnagraficaService {
   anaList: AnagraficaDto[] = [];
 
   constructor() {
-    let strList =  localStorage.getItem("anagrafica");
+    let strList =  localStorage.getItem("anagraficas");
     let list = [];
     if(strList){
       list = JSON.parse(strList);
@@ -23,7 +23,7 @@ export class AnagraficaService {
 
   resetList(){
     let list = [];
-    localStorage.setItem("anagrafica-list",JSON.stringify(this.anaList));
+    localStorage.setItem("anagraficas",JSON.stringify(this.anaList));
     this.anaList = list;
   }
 
@@ -66,7 +66,7 @@ export class AnagraficaService {
     ana.identity = ultimo +"";     
       
     this.anaList.push(ana);
-    localStorage.setItem("anagrafica-list",JSON.stringify(this.anaList));
+    localStorage.setItem("anagraficas",JSON.stringify(this.anaList));
   }
 
   updateAnagrafica(ana:AnagraficaDto){
@@ -77,7 +77,7 @@ export class AnagraficaService {
       }
       i++;
     }
-    localStorage.setItem("anagrafica-list",JSON.stringify(this.anaList));
+    localStorage.setItem("anagraficas",JSON.stringify(this.anaList));
     
   }
 
@@ -93,7 +93,7 @@ export class AnagraficaService {
     }
     if(found){
     this.anaList.splice(i,1); 
-    localStorage.setItem("anagrafica-list",JSON.stringify(this.anaList));
+    localStorage.setItem("anagraficas",JSON.stringify(this.anaList));
     }
     
   }

@@ -12,7 +12,7 @@ export class ActivityService {
   activityList: ActivityDto[] = [];
 
   constructor() {
-    let strList =  localStorage.getItem("activity");
+    let strList =  localStorage.getItem("activitys");
     let list = [];
     if(strList){
       list = JSON.parse(strList);
@@ -22,7 +22,7 @@ export class ActivityService {
 
   resetList(){
     let list = [];
-    localStorage.setItem("activity",JSON.stringify(this.activityList));
+    localStorage.setItem("activitys",JSON.stringify(this.activityList));
     this.activityList = list;
   }
 
@@ -50,6 +50,16 @@ export class ActivityService {
     
   }
 
+  canDelPrj(identity:string){
+    let i =0;
+    while(this.activityList[i])
+    {
+      if(this.activityList[i].project.identity==identity) return false
+      i++;
+    }
+    return true;
+  }
+
   addActivity(ana:ActivityDto){
   
     if(!this.activityList) this.activityList=[];
@@ -62,7 +72,7 @@ export class ActivityService {
     ana.identity = ultimo +"";     
       
     this.activityList.push(ana);
-    localStorage.setItem("activity-list",JSON.stringify(this.activityList));
+    localStorage.setItem("activitys",JSON.stringify(this.activityList));
   }
 
   updateActivity(ana:ActivityDto){
@@ -73,7 +83,7 @@ export class ActivityService {
       }
       i++;
     }
-    localStorage.setItem("activity-list",JSON.stringify(this.activityList));
+    localStorage.setItem("activitys",JSON.stringify(this.activityList));
   }
 
   delActivity(ana:ActivityDto){
@@ -88,7 +98,7 @@ export class ActivityService {
     }
     if(found){
     this.activityList.splice(i,1); 
-    localStorage.setItem("anagrafica-list",JSON.stringify(this.activityList));
+    localStorage.setItem("activitys",JSON.stringify(this.activityList));
     }
     
   }

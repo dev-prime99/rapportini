@@ -47,14 +47,14 @@ export class TypeActivityComponent implements OnInit {
 
     if(!this.identity){
       this.typeAcService.addType(data);
-      this.router.navigateByUrl('project-list')
+      this.router.navigateByUrl('type-activity-list')
     }else{
       var data = this.typeForm.getRawValue();
       this.typeAcService.updateTypeAc(data);
       // console.log(data)
     }
     // alert( JSON.stringify( data));
-    this.router.navigateByUrl('project-list');
+    this.router.navigateByUrl('type-activity-list');
   }
 
 }

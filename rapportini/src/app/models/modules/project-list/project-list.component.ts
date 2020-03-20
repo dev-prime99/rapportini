@@ -38,18 +38,9 @@ export class ProjectListComponent implements OnInit {
 
   openDialogDel(ana: ProjectDto) {
 
-    var res = true;
-    for (let index = 0; index < this.actService["activityList"].length; index++) {
-      var act = this.actService["activityList"][index]["project"];
-      var prj = ana.code;
-      if(act == prj) {
-        alert("il dato selezionato al momento è inserito, non è possibile eliminarlo")
-        res = false;
-        break;
-      }  
-      
-    }
-    if(res == true){
+    let can = this.prjService.canDelPrj(ana.identity);
+
+    if(can){
       const dialogRef = this.dialog.open(ProjectListDialog);
       
       dialogRef.afterClosed().subscribe(result => {
@@ -60,6 +51,9 @@ export class ProjectListComponent implements OnInit {
           this.dataSource = this.prjService.getProjectList();
         }
       });
+    }
+    else{
+      alert("nn");
     }
 
 

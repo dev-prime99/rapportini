@@ -3,6 +3,7 @@ import { ProjectDto } from '../models/project-dto';
 import { first  } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { updateData } from '../models/functions/functions';
+import { ActivityService } from './activity.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ export class ProjectService {
 
   prjList: ProjectDto[] = [];
 
-  constructor() {
-    let strList =  localStorage.getItem("project-list");
+  constructor(private rapService: ActivityService) {
+    let strList =  localStorage.getItem("projects");
     let list = [];
     if(strList){
       list = JSON.parse(strList);
@@ -22,7 +23,7 @@ export class ProjectService {
 
   resetList(){
     let list = [];
-    localStorage.setItem("project-list",JSON.stringify(this.prjList));
+    localStorage.setItem("projects",JSON.stringify(this.prjList));
     this.prjList = list;
   }
 
@@ -49,6 +50,10 @@ export class ProjectService {
     return lista;
   }
 
+  canDelPrj(identity:string):boolean{
+    return this.rapService.canDelPrj(identity);
+  }
+
   addProject(ana:ProjectDto){
   
     if(!this.prjList) this.prjList=[];
@@ -61,7 +66,7 @@ export class ProjectService {
     ana.identity = ultimo +"";     
       
     this.prjList.push(ana);
-    localStorage.setItem("project-list",JSON.stringify(this.prjList));
+    localStorage.setItem("projects",JSON.stringify(this.prjList));
   }
 
   updateProject(ana:ProjectDto){
@@ -72,7 +77,7 @@ export class ProjectService {
       }
       i++;
     }
-    localStorage.setItem("project-list",JSON.stringify(this.prjList));
+    localStorage.setItem("projects",JSON.stringify(this.prjList));
   }
 
   delProject(ana:ProjectDto){
@@ -87,7 +92,7 @@ export class ProjectService {
     }
     if(found){
     this.prjList.splice(i,1); 
-    localStorage.setItem("project-list",JSON.stringify(this.prjList));
+    localStorage.setItem("projects",JSON.stringify(this.prjList));
     }
     
   }

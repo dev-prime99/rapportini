@@ -12,7 +12,7 @@ export class TypeActivityService {
   typeList: TypeActivityDto[] = [];
 
   constructor() {
-    let strList =  localStorage.getItem("type-activity");
+    let strList =  localStorage.getItem("types");
     let list = [];
     if(strList){
       list = JSON.parse(strList);
@@ -22,7 +22,7 @@ export class TypeActivityService {
 
   resetList(){
     let list = [];
-    localStorage.setItem("type-activity",JSON.stringify(this.typeList));
+    localStorage.setItem("types",JSON.stringify(this.typeList));
     this.typeList = list;
   }
 
@@ -60,7 +60,7 @@ export class TypeActivityService {
     ana.identity = ultimo +"";     
       
     this.typeList.push(ana);
-    localStorage.setItem("anagrafica-list",JSON.stringify(this.typeList));
+    localStorage.setItem("types",JSON.stringify(this.typeList));
   }
 
   updateTypeAc(ana:TypeActivityDto){
@@ -71,7 +71,7 @@ export class TypeActivityService {
       }
       i++;
     }
-    localStorage.setItem("project-list",JSON.stringify(this.typeList));
+    localStorage.setItem("types",JSON.stringify(this.typeList));
   }
 
   delTypeAc(ana:TypeActivityDto){
@@ -86,7 +86,7 @@ export class TypeActivityService {
     }
     if(found){
     this.typeList.splice(i,1); 
-    localStorage.setItem("anagrafica-list",JSON.stringify(this.typeList));
+    localStorage.setItem("types",JSON.stringify(this.typeList));
     }
     
   }
