@@ -44,7 +44,8 @@ export class ProjectService {
     var lista  = new Observable<ProjectDto[]>( obs =>{
       obs.next(this.prjList);
       obs.complete;
-    });
+    });    
+    
     return lista;
   }
 
@@ -92,3 +93,4 @@ export class ProjectService {
   }
 
 }
+

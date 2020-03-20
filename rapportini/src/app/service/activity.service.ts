@@ -45,7 +45,9 @@ export class ActivityService {
       obs.next(this.activityList);
       obs.complete;
     });
+    // console.log(this.activityList[0]["project"]);
     return lista;
+    
   }
 
   addActivity(ana:ActivityDto){

@@ -23,7 +23,7 @@
                 <mat-label for="activity">Tipo di Attività</mat-label>
                 <mat-select formControlName="activity">
                     <mat-option *ngFor="let car of cars" [value]="car.code">
-                        {{car.code}}
+                        {{car.code}} - {{car.desc}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
@@ -36,7 +36,7 @@
                 <mat-label for="project">Progetto</mat-label>
                 <mat-select formControlName="project">
                     <mat-option *ngFor="let eye of eyes" [value]="eye.code">
-                        {{eye.code}}
+                        {{eye.code}} - {{eye.desc}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>

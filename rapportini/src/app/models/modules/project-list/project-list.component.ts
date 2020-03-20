@@ -5,6 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ProjectService } from '../../../service/project.service';
+import { ActivityService } from '../../../service/activity.service';
 import { ProjectDto } from '../../project-dto';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
@@ -23,7 +24,7 @@ export class ProjectListComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort
 
-  constructor(private route:Router, private prjService:ProjectService,  public dialog: MatDialog) { }
+  constructor(private route:Router, private prjService:ProjectService, private actService: ActivityService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.prjService.getProjectList().subscribe(x=>{
@@ -31,19 +32,37 @@ export class ProjectListComponent implements OnInit {
     });
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    // console.log(this.actService["activityList"][0]["project"]);
+    
   }
 
   openDialogDel(ana: ProjectDto) {
-    const dialogRef = this.dialog.open(ProjectListDialog);
 
-    dialogRef.afterClosed().subscribe(result => {
-      // console.log(`Dialog result: ${result}`);
-      if (result){
-        // console.log("funziona");        
-        this.prjService.delProject(ana);
-        this.dataSource = this.prjService.getProjectList();
-      }
-    });
+    var res = true;
+    for (let index = 0; index < this.actService["activityList"].length; index++) {
+      var act = this.actService["activityList"][index]["project"];
+      var prj = ana.code;
+      if(act == prj) {
+        alert("il dato selezionato al momento è inserito, non è possibile eliminarlo")
+        res = false;
+        break;
+      }  
+      
+    }
+    if(res == true){
+      const dialogRef = this.dialog.open(ProjectListDialog);
+      
+      dialogRef.afterClosed().subscribe(result => {
+        // console.log(`Dialog result: ${result}`);
+        if (result){
+          // console.log("funziona");        
+          this.prjService.delProject(ana);
+          this.dataSource = this.prjService.getProjectList();
+        }
+      });
+    }
+
+
   }
 
   openDialogRes() {
