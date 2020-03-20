@@ -30,7 +30,11 @@
         
         <ng-container matColumnDef="activity">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Attività </th>
-            <td mat-cell *matCellDef="let row"> {{row.activity.code}} {{row.activity.desc}}</td>
+            <td mat-cell *matCellDef="let row"> {{row.activity.code}}
+                <span class="puntini">
+                    {{row.activity.desc}}
+                </span>
+            </td>
         </ng-container>
         
         <ng-container matColumnDef="project">
