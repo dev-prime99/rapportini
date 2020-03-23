@@ -24,11 +24,11 @@ import { TopBarComponent } from './models/top-bar/top-bar.component';
 import { ActivityListComponent, ActivityListDialog } from './models/modules/activity-list/ActivityListComponent';
 import { ActivityComponent } from './models/modules/activity/activity.component';
 import { AnagraficaHandlerComponent } from './models/modules/anagrafica-handler/anagrafica-handler.component';
-import { AnagraficaListComponent, AnagraficaListDialog } from './models/modules/anagrafica-list/anagrafica-list.component';
+import { AnagraficaListComponent, AnagraficaListDialog, AnagraficaCheckDialog } from './models/modules/anagrafica-list/anagrafica-list.component';
 import { ProjectComponent } from './models/modules/project/project.component';
-import { ProjectListComponent, ProjectListDialog } from './models/modules/project-list/project-list.component';
+import { ProjectListComponent, ProjectListDialog, ProjectCheckDialog } from './models/modules/project-list/project-list.component';
 import { TypeActivityComponent } from './models/modules/type-activity/type-activity.component';
-import { TypeActivityListComponent, TypeActivityListDialog } from './models/modules/type-activity-list/type-activity-list.component';
+import { TypeActivityListComponent, TypeActivityListDialog, TypeActivityCheckDialog } from './models/modules/type-activity-list/type-activity-list.component';
 
 
 @NgModule({
@@ -50,9 +50,12 @@ import { TypeActivityListComponent, TypeActivityListDialog } from './models/modu
     TypeActivityListComponent,
     ActivityListDialog,
     AnagraficaListDialog,
+    AnagraficaCheckDialog,
     ProjectListDialog,
+    ProjectCheckDialog,
     TypeActivityListComponent,
-    TypeActivityListDialog
+    TypeActivityListDialog,
+    TypeActivityCheckDialog
   ],
   imports: [
     BrowserModule,
@@ -72,9 +75,13 @@ import { TypeActivityListComponent, TypeActivityListDialog } from './models/modu
     ActivityListDialog,
     AnagraficaListComponent,
     AnagraficaListDialog,
+    AnagraficaCheckDialog,
     ProjectComponent,
     ProjectListDialog,
-    TypeActivityListDialog
+    ProjectCheckDialog,
+    TypeActivityListComponent,
+    TypeActivityListDialog,
+    TypeActivityCheckDialog
   ],
   providers: [
     {
@@ -86,8 +93,11 @@ import { TypeActivityListComponent, TypeActivityListDialog } from './models/modu
     AppComponent,
     ActivityListDialog,
     AnagraficaListDialog,
+    AnagraficaCheckDialog,
     ProjectListDialog,
-    TypeActivityListDialog
+    ProjectCheckDialog,
+    TypeActivityListDialog,
+    TypeActivityCheckDialog
   ],
 })
 export class AppModule {}

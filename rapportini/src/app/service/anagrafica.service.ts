@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { first  } from 'rxjs/operators'
 import { AnagraficaDto } from '../models/anagrafica-dto';
 import { updateData } from '../models/functions/functions';
+import { ActivityService } from './activity.service';
 
 
 @Injectable({
@@ -12,7 +13,7 @@ export class AnagraficaService {
 
   anaList: AnagraficaDto[] = [];
 
-  constructor() {
+  constructor(private rapService: ActivityService) {
     let strList =  localStorage.getItem("anagraficas");
     let list = [];
     if(strList){
@@ -49,10 +50,9 @@ export class AnagraficaService {
     return lista;
   }
 
-  // addAnagrafica(ana:AnagraficaDto){
-  //   this.anaList.push(ana);
-  //   localStorage.setItem("anagrafica",JSON.stringify(this.anaList));
-  // }
+  canDelAna(identity:string):boolean{
+    return this.rapService.canDelAna(identity);
+  }
 
   addAnagrafica(ana:AnagraficaDto){
   

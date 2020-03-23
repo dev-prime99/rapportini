@@ -35,21 +35,31 @@ export class AnagraficaListComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
-
+  
   openDialogDel(ana: AnagraficaDto) {
-    const dialogRef = this.dialog.open(AnagraficaListDialog);
 
-    dialogRef.afterClosed().subscribe(result => {
-      // console.log(`Dialog result: ${result}`);
-      if (result){
-        // console.log("funziona");        
-        this.anaService.delAnagrafica(ana);
-        this.dataSource = this.anaService.getAnagraficaList();
-      }
-    });
+    let can = this.anaService.canDelAna(ana.identity);
+    
+    if(can){
+      const dialogRef = this.dialog.open(AnagraficaListDialog);
+
+      dialogRef.afterClosed().subscribe(result => {
+        // console.log(`Dialog result: ${result}`);
+        if (result){
+          // console.log("funziona");        
+          this.anaService.delAnagrafica(ana);
+          this.dataSource = this.anaService.getAnagraficaList();
+        }
+      });
+    }
+    else{
+      const dialogRef = this.dialog.open(AnagraficaCheckDialog);
+      dialogRef.afterClosed();
+    }
   }
 
   openDialogRes() {
+
     const dialogRef = this.dialog.open(AnagraficaListDialog);
 
     dialogRef.afterClosed().subscribe(result => {
@@ -82,5 +92,13 @@ export class AnagraficaListComponent implements OnInit {
   templateUrl: '../_dialog/delete-reset-dialog.html',
 })
 export class AnagraficaListDialog {
+
+}
+
+@Component({
+  selector: 'anagrafica-list-dialog',
+  templateUrl: '../_dialog/check-del-dialog.html',
+})
+export class AnagraficaCheckDialog {
 
 }

@@ -3,6 +3,7 @@ import { first  } from 'rxjs/operators'
 import { Observable } from 'rxjs';
 import { TypeActivityDto } from '../models/type_activity-dto';
 import { updateData } from '../models/functions/functions';
+import { ActivityService } from './activity.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class TypeActivityService {
 
   typeList: TypeActivityDto[] = [];
 
-  constructor() {
+  constructor(private rapService: ActivityService) {
     let strList =  localStorage.getItem("types");
     let list = [];
     if(strList){
@@ -46,6 +47,10 @@ export class TypeActivityService {
       obs.complete;
     });
     return lista;
+  }
+
+  canDelType(identity:string):boolean{
+    return this.rapService.canDelPrj(identity);
   }
 
   addType(ana:TypeActivityDto){

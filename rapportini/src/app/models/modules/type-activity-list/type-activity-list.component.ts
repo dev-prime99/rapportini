@@ -31,16 +31,26 @@ export class TypeActivityListComponent implements OnInit {
   }
 
   openDialogDel(ana: TypeActivityDto) {
-    const dialogRef = this.dialog.open(TypeActivityListDialog);
 
-    dialogRef.afterClosed().subscribe(result => {
-      // console.log(`Dialog result: ${result}`);
-      if (result){
-        // console.log("funziona");        
-        this.typeAcService.delTypeAc(ana);
-        this.dataSource = this.typeAcService.getTypeList();
-      }
-    });
+    let can = this.typeAcService.canDelType(ana.identity);
+
+    if(can){
+
+      const dialogRef = this.dialog.open(TypeActivityListDialog);
+      
+      dialogRef.afterClosed().subscribe(result => {
+        // console.log(`Dialog result: ${result}`);
+        if (result){
+          // console.log("funziona");        
+          this.typeAcService.delTypeAc(ana);
+          this.dataSource = this.typeAcService.getTypeList();
+        }
+      });
+    }
+    else{
+      const dialogRef = this.dialog.open(TypeActivityCheckDialog);
+      dialogRef.afterClosed();
+    }
   }
 
   openDialogRes() {
@@ -77,5 +87,13 @@ export class TypeActivityListComponent implements OnInit {
   templateUrl: '../_dialog/delete-reset-dialog.html',
 })
 export class TypeActivityListDialog {
+
+}
+
+@Component({
+  selector: 'anagrafica-list-dialog',
+  templateUrl: '../_dialog/check-del-dialog.html',
+})
+export class TypeActivityCheckDialog {
 
 }

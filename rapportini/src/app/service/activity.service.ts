@@ -60,6 +60,26 @@ export class ActivityService {
     return true;
   }
 
+  canDelAna(identity:string){
+    let i =0;
+    while(this.activityList[i])
+    {
+      if(this.activityList[i].customer.identity==identity) return false
+      i++;
+    }
+    return true;
+  }
+
+  canDelType(identity:string){
+    let i =0;
+    while(this.activityList[i])
+    {
+      if(this.activityList[i].activity.identity==identity) return false
+      i++;
+    }
+    return true;
+  }
+
   addActivity(ana:ActivityDto){
   
     if(!this.activityList) this.activityList=[];

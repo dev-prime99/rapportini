@@ -53,7 +53,8 @@ export class ProjectListComponent implements OnInit {
       });
     }
     else{
-      alert("nn");
+      const dialogRef = this.dialog.open(ProjectCheckDialog);
+      dialogRef.afterClosed();
     }
 
 
@@ -93,5 +94,13 @@ export class ProjectListComponent implements OnInit {
   templateUrl: '../_dialog/delete-reset-dialog.html',
 })
 export class ProjectListDialog {
+
+}
+
+@Component({
+  selector: 'anagrafica-list-dialog',
+  templateUrl: '../_dialog/check-del-dialog.html',
+})
+export class ProjectCheckDialog {
 
 }
