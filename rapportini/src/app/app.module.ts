@@ -29,6 +29,8 @@ import { ProjectComponent } from './models/modules/project/project.component';
 import { ProjectListComponent, ProjectListDialog, ProjectCheckDialog } from './models/modules/project-list/project-list.component';
 import { TypeActivityComponent } from './models/modules/type-activity/type-activity.component';
 import { TypeActivityListComponent, TypeActivityListDialog, TypeActivityCheckDialog } from './models/modules/type-activity-list/type-activity-list.component';
+import { TecniciComponent } from './models/modules/tecnici/tecnici.component';
+import { TecniciListComponent, TecniciListDialog } from './models/modules/tecnici-list/tecnici-list.component';
 
 
 @NgModule({
@@ -55,7 +57,10 @@ import { TypeActivityListComponent, TypeActivityListDialog, TypeActivityCheckDia
     ProjectCheckDialog,
     TypeActivityListComponent,
     TypeActivityListDialog,
-    TypeActivityCheckDialog
+    TypeActivityCheckDialog,
+    TecniciComponent,
+    TecniciListComponent,
+    TecniciListDialog
   ],
   imports: [
     BrowserModule,
@@ -81,7 +86,9 @@ import { TypeActivityListComponent, TypeActivityListDialog, TypeActivityCheckDia
     ProjectCheckDialog,
     TypeActivityListComponent,
     TypeActivityListDialog,
-    TypeActivityCheckDialog
+    TypeActivityCheckDialog,
+    TecniciListComponent,
+    TecniciListDialog
   ],
   providers: [
     {
@@ -97,7 +104,8 @@ import { TypeActivityListComponent, TypeActivityListDialog, TypeActivityCheckDia
     ProjectListDialog,
     ProjectCheckDialog,
     TypeActivityListDialog,
-    TypeActivityCheckDialog
+    TypeActivityCheckDialog,
+    TecniciListDialog
   ],
 })
 export class AppModule {}

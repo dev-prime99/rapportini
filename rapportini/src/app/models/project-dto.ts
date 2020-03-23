@@ -1,6 +1,6 @@
 
 export interface ProjectDto {
     identity: string;
-    code: number;
+    code: string;
     desc: string;
   }

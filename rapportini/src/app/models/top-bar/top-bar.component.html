@@ -8,7 +8,11 @@
             <div class="col-lg-6 bt_int">
                 <button mat-raised-button color="primary" (click) = "toActivity()">Attività</button>
                 <button mat-raised-button color="primary" (click) = "toProject()">Progetti</button>
-                <button mat-raised-button color="primary" (click) = "toRegistry()">Anagrafiche</button>
+                <button mat-raised-button color="primary" [matMenuTriggerFor]="menu">Anagrafiche</button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="toCostumers()">Clienti</button>
+                    <button mat-menu-item (click)="toTecnici()">Tecnici</button>
+                </mat-menu>
             </div>
         </div>
     </div>

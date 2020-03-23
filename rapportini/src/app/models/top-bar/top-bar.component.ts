@@ -17,8 +17,12 @@ export class TopBarComponent implements OnInit {
     this.route.navigateByUrl('')
   }
 
-  toRegistry(){
+  toCostumers(){
     this.route.navigateByUrl('anagrafica-list')
+  }
+
+  toTecnici(){
+    this.route.navigateByUrl('tecnici-list')
   }
 
   toProject(){

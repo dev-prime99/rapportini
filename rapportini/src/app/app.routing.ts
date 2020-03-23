@@ -10,6 +10,8 @@ import { ProjectComponent } from './models/modules/project/project.component';
 import { ProjectListComponent } from './models/modules/project-list/project-list.component';
 import { TypeActivityComponent } from './models/modules/type-activity/type-activity.component';
 import { TypeActivityListComponent } from './models/modules/type-activity-list/type-activity-list.component';
+import { TecniciListComponent } from './models/modules/tecnici-list/tecnici-list.component';
+import { TecniciComponent } from './models/modules/tecnici/tecnici.component';
 
 
 const routes: Routes = [
@@ -20,6 +22,9 @@ const routes: Routes = [
   {path:"anagrafica", component: AnagraficaHandlerComponent},
   {path:"anagrafica/:identity", component: AnagraficaHandlerComponent},
   {path:"anagrafica-list", component: AnagraficaListComponent},
+  {path:"tecnici", component: TecniciComponent},
+  {path:"tecnici/:identity", component: TecniciComponent},
+  {path:"tecnici-list", component: TecniciListComponent},
   {path:"project", component: ProjectComponent},
   {path:"project/:identity", component: ProjectComponent},
   {path:"project-list", component: ProjectListComponent},
