@@ -11,13 +11,13 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 @Component({
   selector: 'app-tecnici-list',
   templateUrl: './tecnici-list.component.html',
-  styles: ['table{width: 100%} th{width: calc(100% / 5)}']
+  styles: ['table{width: 100%} th{width: calc(100% / 6)}']
 })
 export class TecniciListComponent implements OnInit {
 
   rows: TecniciDto[];
 
-  displayedColumns: string[] = ['identity', 'nome', 'surname', 'bt1', 'bt2'];
+  displayedColumns: string[] = ['identity', 'nome', 'surname', 'bt3', 'bt1', 'bt2'];
   dataSource = null;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -33,6 +33,10 @@ export class TecniciListComponent implements OnInit {
     this.dataSource.sort = this.sort;
     // console.log(this.actService["activityList"][0]["project"]);
     
+  }
+
+  selectTec(ana: TecniciDto){
+    this.tecService.selectUser(ana.identity);
   }
 
   openDialogDel(ana: TecniciDto) {

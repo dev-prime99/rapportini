@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { ActivityService } from '../../../service/activity.service';
 import { ActivityDto } from '../../activity-dto';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { UserService } from '../../../service/user.service';
 
 @Component({
   selector: 'app-activity-list',
@@ -15,14 +16,16 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 })
 export class ActivityListComponent implements OnInit {
   rows: ActivityDto[];
-
-  displayedColumns: string[] = ['identity', 'customer', 'activity', 'project', 'date', 'hours', 'desc', 'bt1', 'bt2'];
+  
+  displayedColumns: string[] = ['identity', 'customer', 'activity', 'project', 'date', 'hours', 'user', 'desc', 'bt1', 'bt2'];
   dataSource = null;
-
+  
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort
   
-  constructor(private route: Router, private actService: ActivityService, public dialog: MatDialog) { }
+  constructor(private route: Router, private actService: ActivityService, public dialog: MatDialog, private userService: UserService) { }
+  
+  user = this.userService.userList;
 
   ngOnInit(): void {
     this.actService.getActivityList().subscribe(x=>{

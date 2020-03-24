@@ -3,7 +3,7 @@ import { TecniciDto } from '../models/tecnici-dto';
 import { first  } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { updateData } from '../models/functions/functions';
-import { ActivityService } from './activity.service';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class TecniciService {
 
   tecList: TecniciDto[] = [];
 
-  constructor() {
+  constructor(private userService:UserService) {
     let strList =  localStorage.getItem("tecnici");
     let list = [];
     if(strList){
@@ -46,8 +46,8 @@ export class TecniciService {
       obs.next(this.tecList);
       obs.complete;
     });    
-    
-    return lista;
+
+    return lista;    
   }
 
   addTecnici(ana:TecniciDto){
@@ -91,6 +91,22 @@ export class TecniciService {
     localStorage.setItem("tecnici",JSON.stringify(this.tecList));
     }
     
+  }
+
+  selectUser(user){
+    var i = 0;
+    var found = false;
+    while(this.tecList[i]){
+      if(this.tecList[i].identity==user){
+        found = true;
+        break;
+      }
+      i++;
+    }
+
+    var data = this.tecList[i].name + " " + this.tecList[i].surname;
+
+    this.userService.setUser(data);
   }
 
 }

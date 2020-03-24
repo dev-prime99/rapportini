@@ -9,6 +9,8 @@ import { TypeActivityService } from '../../../service/type-activity.service';
 import { TypeActivityDto } from '../../type_activity-dto';
 import { ProjectService } from '../../../service/project.service';
 import { ProjectDto } from '../../project-dto';
+import { UserService } from '../../../service/user.service';
+import { UserDto } from '../../user-dto';
 
 
 @Component({
@@ -24,13 +26,15 @@ export class ActivityComponent implements OnInit {
   rows: AnagraficaDto[];
   cars: TypeActivityDto[];
   eyes: ProjectDto[];
+  cats: UserDto[];
 
   constructor(private formBuilder: FormBuilder, private route:ActivatedRoute,
     private router:Router,
     private actService:ActivityService,
     private anaService: AnagraficaService,
     private typeAcService: TypeActivityService,
-    private prjService: ProjectService) {
+    private prjService: ProjectService,
+    private userService: UserService) {
     this.activityForm = formBuilder.group({
       identity: [null],
       customer: [null,Validators.required],
@@ -38,10 +42,12 @@ export class ActivityComponent implements OnInit {
       project: [null, Validators.required],
       date: [null,Validators.required],
       hours: [null,Validators.required],
+      user: this.userService.userList,
       desc: [null, Validators.required]
     });
   }
 
+  user = this.userService.userList;
 
   ngOnInit(): void {
     this.identity = this.route.snapshot.params.identity;

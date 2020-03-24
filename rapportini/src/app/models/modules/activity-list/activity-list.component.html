@@ -1,7 +1,10 @@
 
 <div class="container intestazione">
     <div class="row">
-        <h2 class="col-lg-6">Lista Attività</h2>
+        <div class="col-lg-6">
+            <h2>Lista Attività </h2>
+            <span>User: {{user}}</span>
+        </div>
         <div class="col-lg-6 bt_int">
             <button class="bt_list" mat-raised-button color="warn" (click)="openDialogRes()">Reset</button>
             <button mat-raised-button color="primary" (click) = "newActivity()" >Aggiungi</button>
@@ -54,6 +57,11 @@
         <ng-container matColumnDef="hours">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Ore </th>
             <td mat-cell *matCellDef="let row"> {{row.hours}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="user">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> User </th>
+            <td mat-cell *matCellDef="let row"> {{row.user}} </td>
         </ng-container>
 
         <ng-container matColumnDef="desc">
