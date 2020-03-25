@@ -11,6 +11,7 @@ import { ProjectService } from '../../../service/project.service';
 import { ProjectDto } from '../../project-dto';
 import { UserService } from '../../../service/user.service';
 import { UserDto } from '../../user-dto';
+import { TecniciService } from '../../../service/tecnici.service';
 
 
 @Component({
@@ -23,13 +24,12 @@ export class ActivityComponent implements OnInit {
 
   public currentUser: UserDto = null;
 
-  us = this.currentUser.name + " " + this.currentUser.surname;
-
   activityForm: FormGroup;
   identity: string;
   rows: AnagraficaDto[];
   cars: TypeActivityDto[];
   eyes: ProjectDto[];
+  cats: UserDto[];
 
   constructor(private formBuilder: FormBuilder, private route:ActivatedRoute,
     private router:Router,
@@ -37,6 +37,7 @@ export class ActivityComponent implements OnInit {
     private anaService: AnagraficaService,
     private typeAcService: TypeActivityService,
     private prjService: ProjectService,
+    private tecniciService: TecniciService,
     private userService: UserService) {
     this.activityForm = formBuilder.group({
       identity: [null],
@@ -70,9 +71,14 @@ export class ActivityComponent implements OnInit {
     this.prjService.getProjectList().subscribe(x=>{
       this.eyes = x;
     });
+    this.tecniciService.getTecniciList().subscribe(x=>{
+      this.cats = x;
+    });
     
     this.userService.curerrentUserEmitter$.subscribe(user=>{
       this.currentUser = user;
+      this.activityForm.get("user").setValue(user);
+      this.activityForm.get("user").disable();
     });
     this.userService.refreshEmit();
   }
