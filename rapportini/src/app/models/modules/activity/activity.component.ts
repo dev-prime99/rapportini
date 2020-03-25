@@ -21,12 +21,15 @@ import { UserDto } from '../../user-dto';
 
 export class ActivityComponent implements OnInit {
 
+  public currentUser: UserDto = null;
+
+  us = this.currentUser.name + " " + this.currentUser.surname;
+
   activityForm: FormGroup;
   identity: string;
   rows: AnagraficaDto[];
   cars: TypeActivityDto[];
   eyes: ProjectDto[];
-  cats: UserDto[];
 
   constructor(private formBuilder: FormBuilder, private route:ActivatedRoute,
     private router:Router,
@@ -42,12 +45,10 @@ export class ActivityComponent implements OnInit {
       project: [null, Validators.required],
       date: [null,Validators.required],
       hours: [null,Validators.required],
-      user: this.userService.userList,
+      user: [null],
       desc: [null, Validators.required]
     });
   }
-
-  user = this.userService.userList;
 
   ngOnInit(): void {
     this.identity = this.route.snapshot.params.identity;
@@ -69,6 +70,11 @@ export class ActivityComponent implements OnInit {
     this.prjService.getProjectList().subscribe(x=>{
       this.eyes = x;
     });
+    
+    this.userService.curerrentUserEmitter$.subscribe(user=>{
+      this.currentUser = user;
+    });
+    this.userService.refreshEmit();
   }
 
   toIndietro(){

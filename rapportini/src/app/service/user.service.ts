@@ -1,26 +1,37 @@
 import { Injectable } from '@angular/core';
 import { UserDto } from '../models/user-dto';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  userList: UserDto[] = [];
+  public curerrentUserEmitter$ = new Subject<UserDto>()
+
+  private currentUser: UserDto = null;
 
   constructor() {
-    let list = [];
-    let strList =  localStorage.getItem("user");
-    if(strList){
-      list = JSON.parse(strList);
-      this.userList = list;
-    }
+    let user:UserDto = null;
+    let strUser =  localStorage.getItem("user");
+    if(strUser){
+      user = JSON.parse(strUser);
+      this.currentUser = user;
+      this.refreshEmit();
+    }       
+  }
+
+  getCurrentUser(){
+    return this.currentUser;
+  }
+
+  refreshEmit(){
+    this.curerrentUserEmitter$.next(this.currentUser);
   }
 
   setUser(user:UserDto){
-    this.userList = [];
-    this.userList.push(user);
-    localStorage.setItem("user",JSON.stringify(this.userList));
+    this.currentUser = user;
+    this.refreshEmit();
+    localStorage.setItem("user",JSON.stringify(user));
   }
 }

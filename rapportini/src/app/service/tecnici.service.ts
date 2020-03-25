@@ -4,6 +4,7 @@ import { first  } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { updateData } from '../models/functions/functions';
 import { UserService } from './user.service';
+import { UserDto } from '../models/user-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -93,20 +94,23 @@ export class TecniciService {
     
   }
 
-  selectUser(user){
+  selectUser(identity:string){
     var i = 0;
     var found = false;
+    let user = null;
     while(this.tecList[i]){
-      if(this.tecList[i].identity==user){
+      if(this.tecList[i].identity==identity){
         found = true;
+        user = this.tecList[i];
         break;
       }
       i++;
     }
-
-    var data = this.tecList[i].name + " " + this.tecList[i].surname;
-
-    this.userService.setUser(data);
+    
+    if(user){
+      this.userService.setUser(user);
+    }
+    
   }
 
 }

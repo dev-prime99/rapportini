@@ -18,6 +18,10 @@ div.rev button{
     margin-left: 12px;
 }
 
+.bt_int{
+    align-items: center;
+}
+
 .bt_int button{
     float: right;
     margin-left: 12px;

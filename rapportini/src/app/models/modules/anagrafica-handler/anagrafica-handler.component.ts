@@ -30,7 +30,9 @@ export class AnagraficaHandlerComponent implements OnInit {
   ngOnInit(): void { 
     this.identity = this.route.snapshot.params.identity;
     if(this.identity){
-      this.anaService.getAnagrafica(this.identity).subscribe(data =>{
+
+      let lista$ =  this.anaService.getAnagrafica(this.identity);
+      lista$.subscribe(data =>{
         if(data){
           let model = this.anagraficaForm.getRawValue();
           let m = mapDataFromModel(data,model);

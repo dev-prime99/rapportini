@@ -8,6 +8,7 @@ import { ActivityService } from '../../../service/activity.service';
 import { ActivityDto } from '../../activity-dto';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { UserService } from '../../../service/user.service';
+import { UserDto } from '../../user-dto';
 
 @Component({
   selector: 'app-activity-list',
@@ -15,18 +16,23 @@ import { UserService } from '../../../service/user.service';
   styleUrls: ['./activity-list.component.scss']
 })
 export class ActivityListComponent implements OnInit {
+
   rows: ActivityDto[];
   
-  displayedColumns: string[] = ['identity', 'customer', 'activity', 'project', 'date', 'hours', 'user', 'desc', 'bt1', 'bt2'];
+  displayedColumns: string[] = ['identity', 'customer', 'activity',
+  'project', 'date', 'hours', 'user', 'desc', 'bt1', 'bt2'];
   dataSource = null;
+  user:UserDto= null;
   
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort
   
-  constructor(private route: Router, private actService: ActivityService, public dialog: MatDialog, private userService: UserService) { }
-  
-  user = this.userService.userList;
+  constructor(private route: Router, private actService: ActivityService,
+    public dialog: MatDialog, 
+    private userService: UserService) {
 
+   }
+  
   ngOnInit(): void {
     this.actService.getActivityList().subscribe(x=>{
       this.dataSource = new MatTableDataSource(x);
