@@ -31,6 +31,8 @@ import { TypeActivityComponent } from './models/modules/type-activity/type-activ
 import { TypeActivityListComponent, TypeActivityListDialog, TypeActivityCheckDialog } from './models/modules/type-activity-list/type-activity-list.component';
 import { TecniciComponent } from './models/modules/tecnici/tecnici.component';
 import { TecniciListComponent, TecniciListDialog } from './models/modules/tecnici-list/tecnici-list.component';
+import { ApiModule } from './api/api.module';
+import { LoginComponent } from './models/modules/login/login.component';
 
 
 @NgModule({
@@ -60,7 +62,8 @@ import { TecniciListComponent, TecniciListDialog } from './models/modules/tecnic
     TypeActivityCheckDialog,
     TecniciComponent,
     TecniciListComponent,
-    TecniciListDialog
+    TecniciListDialog,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +76,8 @@ import { TecniciListComponent, TecniciListDialog } from './models/modules/tecnic
     AppRoutes,
     DemoMaterialModule,
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ApiModule.forRoot({ rootUrl: 'https://alessioapidev.oeerp.biz/swagger/v1/swagger.json' }),
   ],
   entryComponents: [
     ActivityListComponent,

@@ -12,10 +12,12 @@ import { TypeActivityComponent } from './models/modules/type-activity/type-activ
 import { TypeActivityListComponent } from './models/modules/type-activity-list/type-activity-list.component';
 import { TecniciListComponent } from './models/modules/tecnici-list/tecnici-list.component';
 import { TecniciComponent } from './models/modules/tecnici/tecnici.component';
+import { LoginComponent } from './models/modules/login/login.component';
 
 
 const routes: Routes = [
   {path:"",redirectTo:'/activity-list',pathMatch:'full'},
+  {path:"login", component: LoginComponent},
   {path:"activity-list", component: InitPageComponent},
   {path:"activity", component: ActivityComponent},
   {path:"activity/:identity", component: ActivityComponent},

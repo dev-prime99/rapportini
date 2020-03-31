@@ -1,0 +1,14 @@
+
+<form [formGroup]="formValue" class="container">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" formControlName="username">
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" formControlName="password">>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary" (click)="login()">Login</button>
+    </div>
+</form>

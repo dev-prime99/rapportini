@@ -1,0 +1,40 @@
+/* tslint:disable */
+import { BankDto } from './bank-dto';
+import { BizDocAddressDto } from './biz-doc-address-dto';
+import { BizDocStakeholderDto } from './biz-doc-stakeholder-dto';
+import { BizDocumentDetailDto } from './biz-document-detail-dto';
+import { BizDocumentTypeDto } from './biz-document-type-dto';
+import { DiscountDto } from './discount-dto';
+import { NoteDto } from './note-dto';
+import { PaymentTypeDto } from './payment-type-dto';
+import { StatusDto } from './status-dto';
+export interface BizDocumentDto {
+  addresses?: null | Array<BizDocAddressDto>;
+  bank?: null | BankDto;
+  cig?: null | string;
+  closeDate?: null | string;
+  code?: null | string;
+  commissionCode?: null | string;
+  creationDate?: string;
+  cup?: null | string;
+  description?: null | string;
+  discounts?: null | Array<DiscountDto>;
+  documentDate?: string;
+  expiryDate?: null | string;
+  identity?: null | string;
+  increases?: null | Array<DiscountDto>;
+  incremental?: number;
+  isClose?: boolean;
+  label?: null | string;
+  notes?: null | Array<NoteDto>;
+  payment?: null | PaymentTypeDto;
+  reference?: null | string;
+  referent?: null | string;
+  revisionDate?: null | string;
+  rows?: null | Array<BizDocumentDetailDto>;
+  stakeholders?: null | Array<BizDocStakeholderDto>;
+  status?: null | StatusDto;
+  subType?: null | BizDocumentTypeDto;
+  type?: null | BizDocumentTypeDto;
+  version?: null | number;
+}
