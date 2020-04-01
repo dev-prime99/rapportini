@@ -33,6 +33,7 @@ import { TecniciComponent } from './models/modules/tecnici/tecnici.component';
 import { TecniciListComponent, TecniciListDialog } from './models/modules/tecnici-list/tecnici-list.component';
 import { ApiModule } from './api/api.module';
 import { LoginComponent } from './models/modules/login/login.component';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -77,7 +78,7 @@ import { LoginComponent } from './models/modules/login/login.component';
     DemoMaterialModule,
     MatDialogModule,
     ReactiveFormsModule,
-    ApiModule.forRoot({ rootUrl: 'https://alessioapidev.oeerp.biz/swagger/v1/swagger.json' }),
+    ApiModule.forRoot({ rootUrl: environment.apiUrl }),
   ],
   entryComponents: [
     ActivityListComponent,

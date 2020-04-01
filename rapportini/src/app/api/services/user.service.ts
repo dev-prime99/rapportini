@@ -1,6 +1,6 @@
 /* tslint:disable */
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { BaseService } from '../base-service';
 import { ApiConfiguration } from '../api-configuration';
 import { StrictHttpResponse } from '../strict-http-response';
@@ -85,12 +85,11 @@ export class UserService extends BaseService {
 
     const rb = new RequestBuilder(this.rootUrl, UserService.ApiUsersLoginPostPath, 'post');
     if (params) {
-
-
+      rb.body(params, 'application/x-www-form-urlencoded');
     }
     return this.http.request(rb.build({
       responseType: 'json',
-      accept: 'text/json'
+      accept: 'application/json'
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
@@ -119,21 +118,22 @@ export class UserService extends BaseService {
    */
   static readonly ApiUsersRegisterPostPath = '/api/users/register';
 
-  /**
+/**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiUsersRegisterPost$Plain()` instead.
+   * To access only the response body, use `apiUsersRegisterPost$Json$Plain()` instead.
    *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   * This method sends `application/json` and handles request body of type `application/json`.
    */
-  apiUsersRegisterPost$Plain$Response(params?: {
-      body?: RegisterDto
+  apiUsersRegisterPost$Json$Plain$Response(params?: {
+
+    body?: RegisterDto
   }): Observable<StrictHttpResponse<UserDtoBaseResult>> {
 
     const rb = new RequestBuilder(this.rootUrl, UserService.ApiUsersRegisterPostPath, 'post');
     if (params) {
 
 
-      rb.body(params.body, 'application/*+json');
+      rb.body(params.body, 'application/json');
     }
     return this.http.request(rb.build({
       responseType: 'text',
@@ -146,40 +146,42 @@ export class UserService extends BaseService {
     );
   }
 
-  /**
+ /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiUsersRegisterPost$Plain$Response()` instead.
+   * To access the full response (for headers, for example), `apiUsersRegisterPost$Json$Plain$Response()` instead.
    *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   * This method sends `application/json` and handles request body of type `application/json`.
    */
-  apiUsersRegisterPost$Plain(params?: {
-      body?: RegisterDto
+  apiUsersRegisterPost$Json$Plain(params?: {
+
+    body?: RegisterDto
   }): Observable<UserDtoBaseResult> {
 
-    return this.apiUsersRegisterPost$Plain$Response(params).pipe(
+    return this.apiUsersRegisterPost$Json$Plain$Response(params).pipe(
       map((r: StrictHttpResponse<UserDtoBaseResult>) => r.body as UserDtoBaseResult)
     );
   }
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiUsersRegisterPost$Json()` instead.
+   * To access only the response body, use `apiUsersRegisterPost$Json$Json()` instead.
    *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   * This method sends `application/json` and handles request body of type `application/json`.
    */
-  apiUsersRegisterPost$Json$Response(params?: {
-      body?: RegisterDto
+  apiUsersRegisterPost$Json$Json$Response(params?: {
+
+    body?: RegisterDto
   }): Observable<StrictHttpResponse<UserDtoBaseResult>> {
 
     const rb = new RequestBuilder(this.rootUrl, UserService.ApiUsersRegisterPostPath, 'post');
     if (params) {
 
 
-      rb.body(params.body, 'application/*+json');
+      rb.body(params.body, 'application/json');
     }
     return this.http.request(rb.build({
       responseType: 'json',
-      accept: 'text/json'
+      accept: 'application/json'
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
@@ -190,15 +192,16 @@ export class UserService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiUsersRegisterPost$Json$Response()` instead.
+   * To access the full response (for headers, for example), `apiUsersRegisterPost$Json$Json$Response()` instead.
    *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   * This method sends `application/json` and handles request body of type `application/json`.
    */
-  apiUsersRegisterPost$Json(params?: {
-      body?: RegisterDto
+  apiUsersRegisterPost$Json$Json(params?: {
+
+    body?: RegisterDto
   }): Observable<UserDtoBaseResult> {
 
-    return this.apiUsersRegisterPost$Json$Response(params).pipe(
+    return this.apiUsersRegisterPost$Json$Json$Response(params).pipe(
       map((r: StrictHttpResponse<UserDtoBaseResult>) => r.body as UserDtoBaseResult)
     );
   }
@@ -210,19 +213,20 @@ export class UserService extends BaseService {
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiUsersChangePasswordPatch$Plain()` instead.
+   * To access only the response body, use `apiUsersChangePasswordPatch$Json$Plain()` instead.
    *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   * This method sends `application/json` and handles request body of type `application/json`.
    */
-  apiUsersChangePasswordPatch$Plain$Response(params?: {
-      body?: ChangePasswordDto
+  apiUsersChangePasswordPatch$Json$Plain$Response(params?: {
+
+    body?: ChangePasswordDto
   }): Observable<StrictHttpResponse<ObjectBaseResult>> {
 
     const rb = new RequestBuilder(this.rootUrl, UserService.ApiUsersChangePasswordPatchPath, 'patch');
     if (params) {
 
 
-      rb.body(params.body, 'application/*+json');
+      rb.body(params.body, 'application/json');
     }
     return this.http.request(rb.build({
       responseType: 'text',
@@ -237,38 +241,40 @@ export class UserService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiUsersChangePasswordPatch$Plain$Response()` instead.
+   * To access the full response (for headers, for example), `apiUsersChangePasswordPatch$Json$Plain$Response()` instead.
    *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   * This method sends `application/json` and handles request body of type `application/json`.
    */
-  apiUsersChangePasswordPatch$Plain(params?: {
-      body?: ChangePasswordDto
+  apiUsersChangePasswordPatch$Json$Plain(params?: {
+
+    body?: ChangePasswordDto
   }): Observable<ObjectBaseResult> {
 
-    return this.apiUsersChangePasswordPatch$Plain$Response(params).pipe(
+    return this.apiUsersChangePasswordPatch$Json$Plain$Response(params).pipe(
       map((r: StrictHttpResponse<ObjectBaseResult>) => r.body as ObjectBaseResult)
     );
   }
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiUsersChangePasswordPatch$Json()` instead.
+   * To access only the response body, use `apiUsersChangePasswordPatch$Json$Json()` instead.
    *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   * This method sends `application/json` and handles request body of type `application/json`.
    */
-  apiUsersChangePasswordPatch$Json$Response(params?: {
-      body?: ChangePasswordDto
+  apiUsersChangePasswordPatch$Json$Json$Response(params?: {
+
+    body?: ChangePasswordDto
   }): Observable<StrictHttpResponse<ObjectBaseResult>> {
 
     const rb = new RequestBuilder(this.rootUrl, UserService.ApiUsersChangePasswordPatchPath, 'patch');
     if (params) {
 
 
-      rb.body(params.body, 'application/*+json');
+      rb.body(params.body, 'application/json');
     }
     return this.http.request(rb.build({
       responseType: 'json',
-      accept: 'text/json'
+      accept: 'application/json'
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
@@ -279,15 +285,16 @@ export class UserService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiUsersChangePasswordPatch$Json$Response()` instead.
+   * To access the full response (for headers, for example), `apiUsersChangePasswordPatch$Json$Json$Response()` instead.
    *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   * This method sends `application/json` and handles request body of type `application/json`.
    */
-  apiUsersChangePasswordPatch$Json(params?: {
-      body?: ChangePasswordDto
+  apiUsersChangePasswordPatch$Json$Json(params?: {
+
+    body?: ChangePasswordDto
   }): Observable<ObjectBaseResult> {
 
-    return this.apiUsersChangePasswordPatch$Json$Response(params).pipe(
+    return this.apiUsersChangePasswordPatch$Json$Json$Response(params).pipe(
       map((r: StrictHttpResponse<ObjectBaseResult>) => r.body as ObjectBaseResult)
     );
   }
@@ -385,13 +392,14 @@ export class UserService extends BaseService {
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiUsersUserIdRolesPatch$Plain()` instead.
+   * To access only the response body, use `apiUsersUserIdRolesPatch$Json$Plain()` instead.
    *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   * This method sends `application/json` and handles request body of type `application/json`.
    */
-  apiUsersUserIdRolesPatch$Plain$Response(params: {
+  apiUsersUserIdRolesPatch$Json$Plain$Response(params: {
     userId: string;
-      body?: Array<string>
+
+    body?: Array<number>
   }): Observable<StrictHttpResponse<ObjectBaseResult>> {
 
     const rb = new RequestBuilder(this.rootUrl, UserService.ApiUsersUserIdRolesPatchPath, 'patch');
@@ -399,7 +407,7 @@ export class UserService extends BaseService {
 
       rb.path('userId', params.userId);
 
-      rb.body(params.body, 'application/*+json');
+      rb.body(params.body, 'application/json');
     }
     return this.http.request(rb.build({
       responseType: 'text',
@@ -414,29 +422,31 @@ export class UserService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiUsersUserIdRolesPatch$Plain$Response()` instead.
+   * To access the full response (for headers, for example), `apiUsersUserIdRolesPatch$Json$Plain$Response()` instead.
    *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   * This method sends `application/json` and handles request body of type `application/json`.
    */
-  apiUsersUserIdRolesPatch$Plain(params: {
+  apiUsersUserIdRolesPatch$Json$Plain(params: {
     userId: string;
-      body?: Array<string>
+
+    body?: Array<number>
   }): Observable<ObjectBaseResult> {
 
-    return this.apiUsersUserIdRolesPatch$Plain$Response(params).pipe(
+    return this.apiUsersUserIdRolesPatch$Json$Plain$Response(params).pipe(
       map((r: StrictHttpResponse<ObjectBaseResult>) => r.body as ObjectBaseResult)
     );
   }
 
-  /**
+ /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiUsersUserIdRolesPatch$Json()` instead.
+   * To access only the response body, use `apiUsersUserIdRolesPatch$Json$Json()` instead.
    *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   * This method sends `application/json` and handles request body of type `application/json`.
    */
-  apiUsersUserIdRolesPatch$Json$Response(params: {
+  apiUsersUserIdRolesPatch$Json$Json$Response(params: {
     userId: string;
-      body?: Array<string>
+
+    body?: Array<number>
   }): Observable<StrictHttpResponse<ObjectBaseResult>> {
 
     const rb = new RequestBuilder(this.rootUrl, UserService.ApiUsersUserIdRolesPatchPath, 'patch');
@@ -444,11 +454,11 @@ export class UserService extends BaseService {
 
       rb.path('userId', params.userId);
 
-      rb.body(params.body, 'application/*+json');
+      rb.body(params.body, 'application/json');
     }
     return this.http.request(rb.build({
       responseType: 'json',
-      accept: 'text/json'
+      accept: 'application/json'
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
@@ -459,16 +469,17 @@ export class UserService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiUsersUserIdRolesPatch$Json$Response()` instead.
+   * To access the full response (for headers, for example), `apiUsersUserIdRolesPatch$Json$Json$Response()` instead.
    *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   * This method sends `application/json` and handles request body of type `application/json`.
    */
-  apiUsersUserIdRolesPatch$Json(params: {
+  apiUsersUserIdRolesPatch$Json$Json(params: {
     userId: string;
-      body?: Array<string>
+
+    body?: Array<number>
   }): Observable<ObjectBaseResult> {
 
-    return this.apiUsersUserIdRolesPatch$Json$Response(params).pipe(
+    return this.apiUsersUserIdRolesPatch$Json$Json$Response(params).pipe(
       map((r: StrictHttpResponse<ObjectBaseResult>) => r.body as ObjectBaseResult)
     );
   }
@@ -536,7 +547,7 @@ export class UserService extends BaseService {
     }
     return this.http.request(rb.build({
       responseType: 'json',
-      accept: 'text/json'
+      accept: 'application/json'
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
@@ -623,7 +634,7 @@ export class UserService extends BaseService {
     }
     return this.http.request(rb.build({
       responseType: 'json',
-      accept: 'text/json'
+      accept: 'application/json'
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {

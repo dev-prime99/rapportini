@@ -16,7 +16,7 @@ import { LoginComponent } from './models/modules/login/login.component';
 
 
 const routes: Routes = [
-  {path:"",redirectTo:'/activity-list',pathMatch:'full'},
+  {path:"",redirectTo:'/login',pathMatch:'full'},
   {path:"login", component: LoginComponent},
   {path:"activity-list", component: InitPageComponent},
   {path:"activity", component: ActivityComponent},
