@@ -22,12 +22,13 @@ export class LoginComponent implements OnInit {
   }
   
   ngOnInit(): void {
-
+    console.log(this.authService.isLogged());
   }
   
   login(){
-    alert("username: " + this.formValue.value.username + " /  password: " + this.formValue.value.password)
-   
+    // alert("username: " + this.formValue.value.username + " /  password: " + this.formValue.value.password)
+    
+
     this.authService.login(this.formValue.value.username,this.formValue.value.password)
       .subscribe(async response => {
       console.log("Response",response)
@@ -39,27 +40,7 @@ export class LoginComponent implements OnInit {
     });
 
 
-    // this.userService.apiUsersLoginPost$Json(data).subscribe(async response => {
-    //   console.log("apiUsersLoginPost",response);
-    //   if (r.access_token) {
-    //       console.log("TOkenOk",r.access_token);
-    //       this.authService.setToken(r.access_token,r.refresh_token);
-    //       this.loadCompanyInfo();
-    //       if (this.returnUrl) {
-    //         console.log("navigate",this.returnUrl)
-    //         await this.router.navigate([this.returnUrl], {replaceUrl: true});
-    //       } else {
-    //         console.log("navigate '/dashboard'")
-    //         await this.router.navigate(['/dashboard'], {replaceUrl: true});
-    //       }
-        
-    //   } else if (this.error) {
-    //     this.messageService.SwalTypeError('Ops', 'Qualcosa Ã¨ andato storto. Controlla di aver inserito i dati correttamente.');
-    //   }
-    // },error=>{
-    //   this.messageService.SwalTypeError('Ops', 'Qualcosa Ã¨ andato storto. Controlla di aver inserito i dati correttamente.');
-  }
-  
+  } 
   
   
 }

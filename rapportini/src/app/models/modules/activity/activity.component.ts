@@ -9,9 +9,9 @@ import { TypeActivityService } from '../../../service/type-activity.service';
 import { TypeActivityDto } from '../../type_activity-dto';
 import { ProjectService } from '../../../service/project.service';
 import { ProjectDto } from '../../project-dto';
-import { UserService } from '../../../service/user.service';
-import { UserDto } from '../../user-dto';
 import { TecniciService } from '../../../service/tecnici.service';
+import { AuthService } from '../../../service/auth.service';
+import { UserDto } from '../../../api/models';
 
 
 @Component({
@@ -38,7 +38,7 @@ export class ActivityComponent implements OnInit {
     private typeAcService: TypeActivityService,
     private prjService: ProjectService,
     private tecniciService: TecniciService,
-    private userService: UserService) {
+    private authService: AuthService) {
     this.activityForm = formBuilder.group({
       identity: [null],
       customer: [null,Validators.required],
@@ -46,7 +46,7 @@ export class ActivityComponent implements OnInit {
       project: [null, Validators.required],
       date: [null,Validators.required],
       hours: [null,Validators.required],
-      user: [null],
+      // user: [null],
       desc: [null, Validators.required]
     });
   }
@@ -71,16 +71,16 @@ export class ActivityComponent implements OnInit {
     this.prjService.getProjectList().subscribe(x=>{
       this.eyes = x;
     });
-    this.tecniciService.getTecniciList().subscribe(x=>{
-      this.cats = x;
-    });
+    // this.tecniciService.getTecniciList().subscribe(x=>{
+    //   this.cats = x;
+    // });
     
-    this.userService.curerrentUserEmitter$.subscribe(user=>{
+    this.authService.curerrentUserEmitter$.subscribe(user=>{
       this.currentUser = user;
       this.activityForm.get("user").setValue(user);
       this.activityForm.get("user").disable();
     });
-    this.userService.refreshEmit();
+    this.authService.refreshEmit();
   }
 
   toIndietro(){

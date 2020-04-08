@@ -13,26 +13,32 @@ import { TypeActivityListComponent } from './models/modules/type-activity-list/t
 import { TecniciListComponent } from './models/modules/tecnici-list/tecnici-list.component';
 import { TecniciComponent } from './models/modules/tecnici/tecnici.component';
 import { LoginComponent } from './models/modules/login/login.component';
+import { AuthGuard } from './guard/AuthGuard';
+import { UserComponent } from './models/modules/user/user.component';
+import { UserListComponent } from './models/modules/user-list/user-list.component';
 
 
 const routes: Routes = [
-  {path:"",redirectTo:'/login',pathMatch:'full'},
+  {path:"",redirectTo:'/activity-list',pathMatch:'full'},
   {path:"login", component: LoginComponent},
-  {path:"activity-list", component: InitPageComponent},
-  {path:"activity", component: ActivityComponent},
-  {path:"activity/:identity", component: ActivityComponent},
-  {path:"anagrafica", component: AnagraficaHandlerComponent},
-  {path:"anagrafica/:identity", component: AnagraficaHandlerComponent},
-  {path:"anagrafica-list", component: AnagraficaListComponent},
-  {path:"tecnici", component: TecniciComponent},
-  {path:"tecnici/:identity", component: TecniciComponent},
-  {path:"tecnici-list", component: TecniciListComponent},
-  {path:"project", component: ProjectComponent},
-  {path:"project/:identity", component: ProjectComponent},
-  {path:"project-list", component: ProjectListComponent},
-  {path:"type-activity", component: TypeActivityComponent},
-  {path:"type-activity/:identity", component: TypeActivityComponent},
-  {path:"type-activity-list", component: TypeActivityListComponent},
+  {path:"activity-list", component: InitPageComponent, canActivate: [AuthGuard]},
+  {path:"activity", component: ActivityComponent, canActivate: [AuthGuard]},
+  {path:"activity/:identity", component: ActivityComponent, canActivate: [AuthGuard]},
+  {path:"anagrafica", component: AnagraficaHandlerComponent, canActivate: [AuthGuard]},
+  {path:"anagrafica/:identity", component: AnagraficaHandlerComponent, canActivate: [AuthGuard]},
+  {path:"anagrafica-list", component: AnagraficaListComponent, canActivate: [AuthGuard]},
+  {path:"tecnici", component: TecniciComponent, canActivate: [AuthGuard]},
+  {path:"tecnici/:identity", component: TecniciComponent, canActivate: [AuthGuard]},
+  {path:"tecnici-list", component: TecniciListComponent, canActivate: [AuthGuard]},
+  {path:"project", component: ProjectComponent, canActivate: [AuthGuard]},
+  {path:"project/:identity", component: ProjectComponent, canActivate: [AuthGuard]},
+  {path:"project-list", component: ProjectListComponent, canActivate: [AuthGuard]},
+  {path:"user", component: UserComponent, canActivate: [AuthGuard]},
+  {path:"user/:identity", component: UserComponent, canActivate: [AuthGuard]},
+  {path:"user-list", component: UserListComponent, canActivate: [AuthGuard]},
+  {path:"type-activity", component: TypeActivityComponent, canActivate: [AuthGuard]},
+  {path:"type-activity/:identity", component: TypeActivityComponent, canActivate: [AuthGuard]},
+  {path:"type-activity-list", component: TypeActivityListComponent, canActivate: [AuthGuard]},
 ]
 
 @NgModule({

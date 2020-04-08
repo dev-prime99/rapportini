@@ -1,9 +1,9 @@
 
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Provider, forwardRef } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { AppRoutes } from './app.routing';
 import { AppComponent } from './app.component';
@@ -34,6 +34,16 @@ import { TecniciListComponent, TecniciListDialog } from './models/modules/tecnic
 import { ApiModule } from './api/api.module';
 import { LoginComponent } from './models/modules/login/login.component';
 import { environment } from '../environments/environment';
+import { ApiInterceptor } from './shared/ApiInterceptor';
+import { AuthGuard } from './guard/AuthGuard';
+import { UserComponent } from './models/modules/user/user.component';
+import { UserListComponent, UserListDialog } from './models/modules/user-list/user-list.component';
+
+export const API_INTERCEPTOR_PROVIDER: Provider = {
+  provide: HTTP_INTERCEPTORS,
+  useExisting: forwardRef(() => ApiInterceptor),
+  multi: true
+};
 
 
 @NgModule({
@@ -64,7 +74,10 @@ import { environment } from '../environments/environment';
     TecniciComponent,
     TecniciListComponent,
     TecniciListDialog,
-    LoginComponent
+    LoginComponent,
+    UserComponent,
+    UserListComponent,
+    UserListDialog
   ],
   imports: [
     BrowserModule,
@@ -93,13 +106,18 @@ import { environment } from '../environments/environment';
     TypeActivityListDialog,
     TypeActivityCheckDialog,
     TecniciListComponent,
-    TecniciListDialog
+    TecniciListDialog,
+    UserListComponent,
+    UserListDialog
   ],
   providers: [
     {
       provide: LocationStrategy,
       useClass: PathLocationStrategy
-    }
+    },
+    AuthGuard,
+    ApiInterceptor,
+    API_INTERCEPTOR_PROVIDER
   ],
   bootstrap: [
     AppComponent,
@@ -110,7 +128,8 @@ import { environment } from '../environments/environment';
     ProjectCheckDialog,
     TypeActivityListDialog,
     TypeActivityCheckDialog,
-    TecniciListDialog
+    TecniciListDialog,
+    UserListDialog
   ],
 })
 export class AppModule {}

@@ -1,0 +1,6 @@
+table{
+    width: 100%;
+}
+th{
+    width: calc(100% / 5);
+}

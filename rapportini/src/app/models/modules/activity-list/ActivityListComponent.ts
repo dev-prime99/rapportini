@@ -7,8 +7,8 @@ import { Router } from '@angular/router';
 import { ActivityService } from '../../../service/activity.service';
 import { ActivityDto } from '../../activity-dto';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { UserService } from '../../../service/user.service';
-import { UserDto } from '../../user-dto';
+import { UserDto } from '../../../api/models';
+import { AuthService } from '../../../service/auth.service';
 
 @Component({
   selector: 'app-activity-list',
@@ -29,7 +29,7 @@ export class ActivityListComponent implements OnInit {
   
   constructor(private route: Router, private actService: ActivityService,
     public dialog: MatDialog, 
-    private userService: UserService) {
+    private authService: AuthService) {
 
    }
   

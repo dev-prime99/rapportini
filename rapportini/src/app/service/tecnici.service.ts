@@ -3,9 +3,7 @@ import { TecniciDto } from '../models/tecnici-dto';
 import { first  } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { updateData } from '../models/functions/functions';
-import { UserService } from './user.service';
-import { UserDto } from '../models/user-dto';
-
+import { AuthService } from './auth.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +11,7 @@ export class TecniciService {
 
   tecList: TecniciDto[] = [];
 
-  constructor(private userService:UserService) {
+  constructor(private authService:AuthService) {
     let strList =  localStorage.getItem("tecnici");
     let list = [];
     if(strList){
@@ -94,23 +92,6 @@ export class TecniciService {
     
   }
 
-  selectUser(identity:string){
-    var i = 0;
-    var found = false;
-    let user = null;
-    while(this.tecList[i]){
-      if(this.tecList[i].identity==identity){
-        found = true;
-        user = this.tecList[i];
-        break;
-      }
-      i++;
-    }
-    
-    if(user){
-      this.userService.setUser(user);
-    }
-    
-  }
+  
 
 }

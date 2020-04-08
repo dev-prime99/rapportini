@@ -35,9 +35,9 @@ export class TecniciListComponent implements OnInit {
     
   }
 
-  selectTec(ana: TecniciDto){
-    this.tecService.selectUser(ana.identity);
-  }
+  // selectTec(ana: TecniciDto){
+  //   this.tecService.selectUser(ana.identity);
+  // }
 
   openDialogDel(ana: TecniciDto) {
 

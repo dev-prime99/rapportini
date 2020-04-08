@@ -1,19 +1,21 @@
 
-<nav>
+<nav *ngIf="currentUser">
     <div class="container">
         <div class="row">
             <div class="col-lg-3">
-                <h1><a routerLink="/">Rapportini</a></h1>
+                <h1><a routerLink="activity-list">Rapportini</a></h1>
             </div>
             <div class="col-lg-9 bt_int nav">
-                <span>Current user: <i><strong>{{currentUser?.name + ' ' + currentUser?.surname || 'Sconosciuto'}}</strong></i></span>
+                <span>Current user: <i><strong>{{currentUser.username || 'Sconosciuto'}}</strong></i></span>
                 <button mat-raised-button color="primary" [matMenuTriggerFor]="menu">Anagrafiche</button>
                 <mat-menu #menu="matMenu">
                     <button mat-menu-item (click)="toCostumers()">Clienti</button>
-                    <button mat-menu-item (click)="toTecnici()">Tecnici</button>
+                    <button mat-menu-item (click)="toUser()">User</button>
+                    <!-- <button mat-menu-item (click)="toTecnici()">Tecnici</button> -->
                 </mat-menu>
                 <button mat-raised-button color="primary" (click) = "toActivity()">Attività</button>
                 <button mat-raised-button color="primary" (click) = "toProject()">Progetti</button>
+                <button mat-raised-button color="warn" (click) = "logout()">Logout</button>
             </div>
         </div>
     </div>
